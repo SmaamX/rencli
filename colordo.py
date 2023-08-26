@@ -36,16 +36,29 @@ def ref(dela):
     if platform.system() == 'Windows':os.system('cls')
     else:os.system('clear')
 
-def noise(rang):
+def noise(rang,r):
     lplist = []
-    rl = ['B', 'R', 'G', 'BL', 'Y', 'C', 'W']
     for y in range(1,rang):
-        rand = random.choice(rl);lplist.append(rand)
+        rand = random.choice(r);lplist.append(rand)
     return cd(lplist)
 
 if __name__ == '__main__':
+    rl = ['BL','W']
+    rl2 = ['B','R','G','Y','BL','C','W']
     while True:
         try:
             ref('20')
-            print(' '+noise(25),sp(),noise(25),sp(),noise(25),sp(),noise(25),sp(),noise(25),sp(),noise(25),sp(),noise(25))
+            print(' '+noise(45,rl),sp(),noise(45,rl),sp(),noise(45,rl),sp(),noise(45,rl),sp(),noise(45,rl),sp(),noise(45,rl),sp(),noise(45,rl),sp(),noise(45,rl),sp(),noise(45,rl),sp(),noise(45,rl),sp(),noise(45,rl))
+            ref('30')
+            print(' '+cd('B'*44),sp(),cd('B'*44),sp()
+                    ,cd('B'*22)+noise(23,rl2),sp()
+                    ,cd('B'*21)+noise(24,rl2),sp()
+                    ,cd('B'*20)+noise(25,rl2),sp()
+                    ,cd('B'*19)+noise(4,rl2)+cd('B'*22),sp()
+                    ,cd('B'*18)+noise(5,rl2)+cd('B'*22),sp()
+                    ,cd('B'*17)+noise(6,rl2)+cd('B'*22),sp()
+                    ,cd('B'*16)+noise(7,rl2)+cd('B'*22),sp()
+                    ,cd('B'*15)+noise(8,rl2)+cd('B'*22),sp()
+                    ,cd('B'*14)+noise(9,rl2)+cd('B'*22),sp())
+            ref('200')
         except:KeyboardInterrupt;print(cl.Fore.RED + 'FExit');exit()
