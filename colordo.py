@@ -61,4 +61,4 @@ if __name__ == '__main__':
                     ,cd('B'*15)+noise(8,rl2)+cd('B'*22),sp()
                     ,cd('B'*14)+noise(9,rl2)+cd('B'*22),sp())
             ref('200')
-        except:KeyboardInterrupt;print(cl.Fore.RED + 'FExit');exit()
+        except KeyboardInterrupt:print(cl.Fore.RED + 'FExit');exit()
