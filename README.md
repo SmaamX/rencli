@@ -5,5 +5,5 @@ A simple module for image and video outputs in CLI
 + neli() - Returns a newline character
 + refs() - Clears the console screen
 + random_noise() - Generates random colors
-+ prinx() >> print(colz(image))
++ prinx() - print(colz(image))
 + test()
