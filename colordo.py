@@ -62,6 +62,3 @@ def test():
     for x in range(1,19):
         image2 = 'B' * 22 + random_noise(22, ['D', 'Y'])
         prinx(image2)
-
-if __name__=='__main__':
-    test()
