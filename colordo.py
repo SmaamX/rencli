@@ -33,12 +33,12 @@ def neli():
     print('\n')
     
 def refs(dela):
+    dela = dela * (10 ** -3)
+    tm.sleep(dela)
     if platform.system() == 'Windows':
         os.system('cls')
     else:
         os.system('clear')
-    dela = dela * (10 ** -3)
-    tm.sleep(dela)
         
 def random_noise(length, chars):
     return colz(''.join(random.choice(chars) for _ in range(length)))
