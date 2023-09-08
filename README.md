@@ -1,4 +1,4 @@
-# Colordo
+# RenCLI
 A simple module for image and video outputs in CLI
 + color_char() - Takes a list of color codes and returns escape codes to print the colors
 + colz() - Calls color_char() to convert a string to colored text
