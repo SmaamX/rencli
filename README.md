@@ -7,3 +7,4 @@ A simple module for image and video outputs in CLI
 + random_noise() - Generates random colors
 + prinx() - print(colz(image))
 + test()
++ cuscol() - custom color (cuscol(['A','\033[93m',...]))
