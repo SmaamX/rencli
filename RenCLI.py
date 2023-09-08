@@ -3,8 +3,17 @@ import time as tm
 import random
 import platform
 import colorama as cl
-
-cus = ['-','\033[93m']
+cus = []
+def cuscol(lis):
+    global cus
+    if type(lis) != list:
+        cuser = lis
+        print('\033[93m'+'JustList:',cuser)
+    if 'B' in lis or 'R' in lis or 'G' in lis or 'Y' in lis or 'D' in lis or 'C' in lis or 'W' in lis:
+        cuser = lis
+        print('\033[93m'+'Duplicate:',cuser)
+    else:
+        cus = lis
 def color_char(char):
     if char == 'B':
         return cl.Fore.BLUE + '█'
