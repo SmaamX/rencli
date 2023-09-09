@@ -1,14 +1,16 @@
 import os
-import time as tm 
+import time as tm
 import random
 import platform
 import colorama as cl
 cus = []
+def chlist(x):
+    if type(x) != list:
+        cuser = x
+        print('\033[93m'+'JustList:',cuser);exit()
 def cuscol(lis):
     global cus
-    if type(lis) != list:
-        cuser = lis
-        print('\033[93m'+'JustList:',cuser)
+    chlist(lis)
     if 'B' in lis or 'R' in lis or 'G' in lis or 'Y' in lis or 'D' in lis or 'C' in lis or 'W' in lis:
         cuser = lis
         print('\033[93m'+'Duplicate:',cuser)
@@ -34,13 +36,13 @@ def color_char(char):
         return cus[ind+1] + '█'
     else:
         return char
-        
+
 def colz(chars):
     return ''.join(color_char(c) for c in chars)
-    
+
 def neli():
     print('\n')
-    
+
 def refs(dela):
     dela = dela * (10 ** -3)
     tm.sleep(dela)
@@ -48,10 +50,10 @@ def refs(dela):
         os.system('cls')
     else:
         os.system('clear')
-        
+
 def random_noise(length, chars):
     return colz(''.join(random.choice(chars) for _ in range(length)))
-    
+
 def prinx(image):
     print(colz(image))
 
@@ -71,3 +73,13 @@ def test():
     for x in range(1,19):
         image2 = 'B' * 22 + random_noise(22, ['D', 'Y'])
         prinx(image2)
+
+def block(col,col2,rv,ta):
+    T=rv*2;S=0
+    for r in range(rv*2):
+        T = T-1
+        S = S+1
+        for x in range(ta):
+            prinx('D'*rv+col2*T+col*S+'D'*rv)
+        prinx('D'*80)
+        refs(50)
