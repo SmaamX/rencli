@@ -18,19 +18,19 @@ def cuscol(lis):
         cus = lis
 def color_char(char):
     if char == 'B':
-        return cl.Fore.BLUE + '█'
+        return '\u001b[34m' + '█'
     elif char == 'R':
-       return cl.Fore.RED + '█'
+       return '\u001b[31m' + '█'
     elif char == 'G':
-        return cl.Fore.GREEN + '█'
+        return '\u001b[32m' + '█'
     elif char == 'Y':
-        return cl.Fore.YELLOW + '█'
+        return '\u001b[33m' + '█'
     elif char == 'D':
-        return cl.Fore.BLACK + '█'
+        return '\u001b[30m' + '█'
     elif char == 'C':
-        return cl.Fore.CYAN + '█'
+        return '\u001b[36m' + '█'
     elif char == 'W':
-        return cl.Fore.WHITE + '█'
+        return '\u001b[37m' + '█'
     elif char in cus:
         ind = cus.index(char)
         return cus[ind+1] + '█'
