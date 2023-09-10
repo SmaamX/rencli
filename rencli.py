@@ -22,6 +22,11 @@ def chnum(x):
         cuser = x
         print('\033[93m'+'JustInt:',cuser,type(x));exit()
 
+def chpar(x):
+    if '-' in x or '+' in x:
+        print('\u001b[31mTwoInp:',x)
+        exit()
+
 def cuscol(lis,fp2=200):
     global cus
     global FP
@@ -64,26 +69,10 @@ def colz(chars):
 
 def random_noise(length, chars):
     chlist(chars)
+    chpar(chars)
     if len(chars)<2:
         print('\u001b[31mTwoInp:',chars);exit()
     return colz(''.join(random.choice(chars) for _ in range(length)))
 
 def prinx(image):
     print(colz(image))
-
-def test():
-    refs(100)
-
-    image = 'B' * 44
-    prinx(image)
-
-    for x in range(1,19):
-        image2 = 'B' * 22 + random_noise(22, ['D', 'R'])
-        prinx(image2)
-
-    image = 'B' * 44
-    prinx(image)
-
-    for x in range(1,19):
-        image2 = 'B' * 22 + random_noise(22, ['D', 'Y'])
-        prinx(image2)
