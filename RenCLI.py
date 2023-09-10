@@ -52,6 +52,9 @@ def refs(dela):
         os.system('clear')
 
 def random_noise(length, chars):
+    chlist(chars)
+    if len(chars)<2:
+        print('\u001b[31mTwoInp:',chars);exit()
     return colz(''.join(random.choice(chars) for _ in range(length)))
 
 def prinx(image):
