@@ -2,7 +2,6 @@ import os
 import time as tm
 import random
 import platform
-import colorama as cl
 cus = []
 def chlist(x):
     if type(x) != list:
