@@ -10,7 +10,7 @@ def chlist(x):
 def cuscol(lis):
     global cus
     chlist(lis)
-    if 'B' in lis or 'R' in lis or 'G' in lis or 'Y' in lis or 'D' in lis or 'C' in lis or 'W' in lis:
+    if 'B' in lis or 'R' in lis or 'G' in lis or 'Y' in lis or 'D' in lis or 'C' in lis or 'W' in lis or '-' in lis:
         cuser = lis
         print('\033[93m'+'Duplicate:',cuser)
     else:
@@ -30,6 +30,8 @@ def color_char(char):
         return '\u001b[36m' + '█'
     elif char == 'W':
         return '\u001b[37m' + '█'
+    elif char == '-':
+        return '\n'
     elif char in cus:
         ind = cus.index(char)
         return cus[ind+1] + '█'
@@ -38,9 +40,6 @@ def color_char(char):
 
 def colz(chars):
     return ''.join(color_char(c) for c in chars)
-
-def neli():
-    print('\n')
 
 def refs(dela):
     dela = dela * (10 ** -3)
