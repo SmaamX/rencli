@@ -75,13 +75,3 @@ def test():
     for x in range(1,19):
         image2 = 'B' * 22 + random_noise(22, ['D', 'Y'])
         prinx(image2)
-
-def block(col,col2,rv,ta):
-    T=rv*2;S=0
-    for r in range(rv*2):
-        T = T-1
-        S = S+1
-        for x in range(ta):
-            prinx('D'*rv+col2*T+col*S+'D'*rv)
-        prinx('D'*80)
-        refs(50)
