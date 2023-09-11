@@ -6,5 +6,5 @@ A simple module for image and video outputs in CLI
 + refs() - Clears the console screen
 + random_noise() - Generates random colors
 + prinx() - print(colz(image))
-+ test()
-+ cuscol() - custom color (cuscol(['A','\033[93m',...]))
++ cuscol() - custom color, text background, etc.
++ (cuscol(lis=['A','\033[93m',...]))
