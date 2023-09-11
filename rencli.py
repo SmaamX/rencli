@@ -11,8 +11,8 @@ FP = 200
 backlog=''
 tex=''
 bol=False
-mand = False
-def cuscol(lis=['T','\u001b[30;1m'],fp2=200,back='',text=['\u001b[30;1m',True],manr=False):
+mand = True
+def cuscol(lis=['T','\u001b[30;1m'],fp2=200,back='',text=['\u001b[30;1m',True],manr=True):
     global mand
     global cus
     global FP
