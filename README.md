@@ -6,6 +6,6 @@ A simple module for image and animation outputs in CLI
 + neli() - Returns a newline character
 + refs() - Clears the console screen
 + random_noise() - Generates random colors
-+ prinx() - print(colz(image))
++ prinx() - sys.stdout.write(colz(image))
 + cuscol() - custom color, text color, etc.
   (cuscol(lis=['A','\033[93m',...]))
