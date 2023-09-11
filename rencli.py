@@ -38,9 +38,9 @@ def cuscol(lis=['T','\u001b[30;1m'],fp2=200,back='',text=['\u001b[30;1m',True],m
 
 def refs(dela):
     global mand
+    dela = dela * (10 ** -3)
+    tm.sleep(dela)
     if mand == False:
-        dela = dela * (10 ** -3)
-        tm.sleep(dela)
         sys.stdout.flush()
     else:
         if platform.system() == 'Windows':
