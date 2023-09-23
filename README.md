@@ -9,3 +9,4 @@ A simple module for image and animation outputs in CLI
 + prinx() - sys.stdout.write(colz(image))
 + cuscol() - custom color, text color, etc.
   (cuscol(lis=['A','\033[93m',...]))
++ image2rencli('test.png',250, show=False) - print image in CLI
