@@ -118,7 +118,6 @@ def prinx(image):
 def image2rencli(im,piXY,show=False):
     data = np.array(Image.open(im))
     data = cv2.resize(data, (piXY, piXY)) 
-    print(data.shape)
     image = ''
     for i in range(piXY):
         for j in range(piXY):
@@ -130,6 +129,7 @@ def image2rencli(im,piXY,show=False):
         image += '\n'
     print(image)
     if show == True:
+        print(data.shape)
         plt.imshow(data)
         plt.show()
 
