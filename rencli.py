@@ -3,6 +3,11 @@ import time as tm
 import random
 import sys
 import platform
+import matplotlib.pyplot as plt
+from PIL import Image  # mono
+import matplotlib as mats
+import cv2
+import numpy as np
 
 cus = ['T',"\u001b[31m"]
 backlog = ''
@@ -109,3 +114,23 @@ def random_noise(length, chars):
 
 def prinx(image):
     sys.stdout.write(colz(image))
+
+def image2rencli(im,piXY,show=False):
+    data = np.array(Image.open(im))
+    data = cv2.resize(data, (piXY, piXY)) 
+    print(data.shape)
+    image = ''
+    for i in range(piXY):
+        for j in range(piXY):
+            rgb = data[i,j]
+            r = rgb[0]
+            g = rgb[1] 
+            b = rgb[2]
+            image += f'\033[38;2;{int(r)};{int(g)};{int(b)}m' + '█'
+        image += '\n'
+    print(image)
+    if show == True:
+        plt.imshow(data)
+        plt.show()
+
+#image2rencli('test.png',250)
