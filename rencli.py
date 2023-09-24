@@ -3,11 +3,6 @@ import time as tm
 import random
 import sys
 import platform
-import matplotlib.pyplot as plt
-from PIL import Image  # mono
-import matplotlib as mats
-import cv2
-import numpy as np
 
 cus = ['T',"\u001b[31m"]
 backlog = ''
@@ -116,7 +111,19 @@ def prinx(image):
     sys.stdout.write(colz(image))
 
 def image2rencli(im,piXY,show=False):
-    data = np.array(Image.open(im))
+    try:import matplotlib.pyplot as plt
+    except:print('\033[93mpip install matplotlib');exit()
+    try:from PIL import Image
+    except:print('\033[93mpip install Image');exit()
+    try:import cv2
+    except:print('\033[93mpip install cv2');exit()
+    try:import numpy as np
+    except:print('\033[93mpip install numpy');exit()
+    chn(im, str)
+    try:data = np.array(Image.open(im))
+    except:
+        print('\033[93mBadAD:',im)
+        exit()
     data = cv2.resize(data, (piXY, piXY))
     image = ''
     for i in range(piXY):
