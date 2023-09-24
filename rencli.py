@@ -111,6 +111,7 @@ def prinx(image):
     sys.stdout.write(colz(image))
 
 def image2rencli(im,piXY,show=False):
+    fl = False
     try:import matplotlib.pyplot as plt
     except:print('\033[93mpip install matplotlib');fl=True
     try:from PIL import Image
@@ -130,10 +131,14 @@ def image2rencli(im,piXY,show=False):
     for i in range(piXY):
         for j in range(piXY):
             rgb = data[i,j]
-            r = rgb[0]
-            g = rgb[1] 
-            b = rgb[2]
-            image += f'\033[38;2;{int(r)};{int(g)};{int(b)}m' + '█'
+            try:r = rgb[0]
+            except:r = 0
+            try:g = rgb[1] 
+            except:g = 0
+            try:b = rgb[2]
+            except:b = 0
+            if r == 0 and g == 0 and b == 0:image += f'\033[38;2;{int(rgb)};{int(rgb)};{int(rgb)}m' + '█'
+            else:image += f'\033[38;2;{int(r)};{int(g)};{int(b)}m' + '█'
         image += '\n'
     if show == True:
         print(data.shape)
@@ -144,4 +149,4 @@ def imgx(im,piXY,show=False):
     s=show
     sys.stdout.write(image2rencli(im,piXY,show=s))
 
-#imgx('test.png',100, show=False)
+imgx('C:/Users/shasa/Desktop/rick.png',50, show=False)
