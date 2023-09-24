@@ -112,13 +112,14 @@ def prinx(image):
 
 def image2rencli(im,piXY,show=False):
     try:import matplotlib.pyplot as plt
-    except:print('\033[93mpip install matplotlib');exit()
+    except:print('\033[93mpip install matplotlib');fl=True
     try:from PIL import Image
-    except:print('\033[93mpip install Image');exit()
+    except:print('\033[93mpip install Image');fl=True
     try:import cv2
-    except:print('\033[93mpip install cv2');exit()
+    except:print('\033[93mpip install cv2');fl=True
     try:import numpy as np
-    except:print('\033[93mpip install numpy');exit()
+    except:print('\033[93mpip install numpy');fl=True
+    if fl == True:exit()
     chn(im, str)
     try:data = np.array(Image.open(im))
     except:
