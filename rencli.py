@@ -142,6 +142,6 @@ def image2rencli(im,piXY,show=False):
     return image
 def imgx(im,piXY,show=False):
     s=show
-    print(image2rencli(im,piXY,show=s))
+    sys.stdout.write(image2rencli(im,piXY,show=s))
 
 #imgx('test.png',100, show=False)
