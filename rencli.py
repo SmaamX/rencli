@@ -149,4 +149,4 @@ def imgx(im,piXY,show=False):
     s=show
     sys.stdout.write(image2rencli(im,piXY,show=s))
 
-imgx('C:/Users/shasa/Desktop/rick.png',50, show=False)
+#imgx('test.png',50, show=False)
