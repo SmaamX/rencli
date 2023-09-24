@@ -117,7 +117,7 @@ def prinx(image):
 
 def image2rencli(im,piXY,show=False):
     data = np.array(Image.open(im))
-    data = cv2.resize(data, (piXY, piXY)) 
+    data = cv2.resize(data, (piXY, piXY))
     image = ''
     for i in range(piXY):
         for j in range(piXY):
@@ -127,10 +127,13 @@ def image2rencli(im,piXY,show=False):
             b = rgb[2]
             image += f'\033[38;2;{int(r)};{int(g)};{int(b)}m' + '█'
         image += '\n'
-    print(image)
     if show == True:
         print(data.shape)
         plt.imshow(data)
         plt.show()
+    return image
+def imgx(im,piXY,show=False):
+    s=show
+    print(image2rencli(im,piXY,show=s))
 
-#image2rencli('test.png',250)
+#imgx('test.png',100, show=False)
