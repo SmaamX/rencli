@@ -170,4 +170,4 @@ def renweb(url,piXY,save=None):
     else:print('\033[93mReTN:', fname)
     imgx(fname, piXY)
 
-#renweb('https://upload.wikimedia.org/wikipedia/commons/thumb/a/a3/ThinkCentre_S50.jpg/800px-ThinkCentre_S50.jpg',100,save='Tesr')
+#renweb('https://upload.wikimedia.org/wikipedia/commons/thumb/a/a3/ThinkCentre_S50.jpg/800px-ThinkCentre_S50.jpg',100,save='Test')
