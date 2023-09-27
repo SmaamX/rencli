@@ -171,4 +171,4 @@ def renweb(url,piXY,save=None,dr=False):
     if dr==False:image2rencli(fname,piXY)
     elif dr==True:imgx(fname, piXY)
     else:image2rencli(fname,piXY)
-#renweb('https://upload.wikimedia.org/wikipedia/commons/thumb/a/a3/ThinkCentre_S50.jpg/800px-ThinkCentre_S50.jpg',100,save='Test')
+#renweb('https://upload.wikimedia.org/wikipedia/commons/thumb/a/a3/ThinkCentre_S50.jpg/800px-ThinkCentre_S50.jpg',100,save='Test',dr=True)
