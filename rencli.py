@@ -150,7 +150,7 @@ def imgx(im,piXY,show=False):
 
 #imgx('test.png',50, show=False)
 
-def renweb(url,piXY,save=None):
+def renweb(url,piXY,save=None,dr=False):
     ft=False
     try:import requests
     except:print('\033[93mpip install requests');ft=True
@@ -168,6 +168,7 @@ def renweb(url,piXY,save=None):
         if save == None:img.save(fname)
         else:img.save()
     else:print('\033[93mReTN:', fname)
-    imgx(fname, piXY)
-
+    if dr==False:image2rencli(fname,piXY)
+    elif dr==True:imgx(fname, piXY)
+    else:image2rencli(fname,piXY)
 #renweb('https://upload.wikimedia.org/wikipedia/commons/thumb/a/a3/ThinkCentre_S50.jpg/800px-ThinkCentre_S50.jpg',100,save='Test')
