@@ -41,7 +41,7 @@ def refs(dela):
     dela = dela * (10 ** -3)
     tm.sleep(dela)
     if mand == False:
-        sys.stdout.flush()
+        sys.stdout.write("\033[2K")
     else:
         if platform.system() == 'Windows':
             os.system('cls')
