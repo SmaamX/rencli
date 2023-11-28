@@ -118,7 +118,7 @@ def image2rencli(im,piXY,show=False):
     try:from PIL import Image
     except:print('\033[93mpip install Image');fl=True
     try:import cv2
-    except:print('\033[93mpip install cv2');fl=True
+    except:print('\033[93mpip install opencv-python');fl=True
     try:import numpy as np
     except:print('\033[93mpip install numpy');fl=True
     if fl == True:exit()
