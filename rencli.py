@@ -59,29 +59,34 @@ def chpar(x):
         print('\u001b[31mTwoInp:',x)
         exit()
 
-def color_char(char):
+def color_char(char,shadow=0):
     global backlog
+    if shadow == 0: vj = '█'
+    elif shadow == 1: vj = '▓'
+    elif shadow == 2: vj = '▒'
+    elif shadow == 3: vj = '░'
+    else:print('\u001b[31mBadShadowConf:',shadow);exit()
     if char == '§':
         backlog = '\u001b[44m'
-        return '\u001b[0m'+'\u001b[44m'+'\u001b[34m' + '█'
+        return '\u001b[0m'+('\u001b[44m' if shadow == 0 else '')+'\u001b[34m' + vj
     elif char == '¦':
         backlog = '\u001b[41m'
-        return '\u001b[0m'+'\u001b[41m'+'\u001b[31m' + '█'
+        return '\u001b[0m'+('\u001b[41m' if shadow == 0 else '')+'\u001b[31m' + vj
     elif char == '¶':
         backlog = '\u001b[42m'
-        return '\u001b[0m'+'\u001b[42m'+'\u001b[32m' + '█'
+        return '\u001b[0m'+('\u001b[42m' if shadow == 0 else '')+'\u001b[32m' + vj
     elif char == 'Ą':
         backlog = '\u001b[43m'
-        return '\u001b[0m'+'\u001b[43m'+'\u001b[33m' + '█'
+        return '\u001b[0m'+('\u001b[43m' if shadow == 0 else '')+'\u001b[33m' + vj
     elif char == 'º':
         backlog = '\u001b[40m'
-        return '\u001b[0m'+'\u001b[40m'+'\u001b[30m' + '█'
+        return '\u001b[0m'+('\u001b[40m' if shadow == 0 else '')+'\u001b[30m' + vj
     elif char == '¸':
         backlog = '\u001b[46m'
-        return '\u001b[0m'+'\u001b[46m'+'\u001b[36m' + '█'
+        return '\u001b[0m'+('\u001b[46m' if shadow == 0 else '')+'\u001b[36m' + vj
     elif char == 'Į':
         backlog = '\u001b[47m'
-        return '\u001b[0m'+'\u001b[47m'+'\u001b[37m' + '█'
+        return '\u001b[0m'+('\u001b[47m' if shadow == 0 else '')+'\u001b[37m' + vj
     elif char == 'ŀ':
         return '\n'
     elif char == 'ę':
@@ -96,8 +101,8 @@ def color_char(char):
         else:
             '\u001b[0m' + '\033[1m' + '\u001b[7m' + tex + char
 
-def colz(chars,mand=False):
-    return ''.join(color_char(c) for c in chars)
+def colz(chars,shadow=0,mand=False):
+    return ''.join(color_char(c,shadow) for c in chars)
 
 def random_noise(length, chars):
     chn(chars,list)
@@ -107,8 +112,8 @@ def random_noise(length, chars):
         print('\u001b[31mTwoInp:',chars);exit()
     return colz(''.join(random.choice(chars) for _ in range(length)))
 
-def prinx(image):
-    sys.stdout.write(colz(image))
+def prinx(image,sha=0):
+    sys.stdout.write(colz(image,shadow=sha))
 
 def image2rencli(im,piXY,show=False):
     fl = False
