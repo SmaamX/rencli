@@ -1,4 +1,4 @@
-#RenCLI - ver1.4.3
+#RenCLI - ver1.4.4
 import os
 import time as tm
 import random
@@ -62,28 +62,28 @@ def chpar(x):
 
 def color_char(char):
     global backlog
-    if char == 'B':
+    if char == '§':
         backlog = '\u001b[44m'
         return '\u001b[0m'+'\u001b[44m'+'\u001b[34m' + '█'
-    elif char == 'R':
+    elif char == '¦':
         backlog = '\u001b[41m'
         return '\u001b[0m'+'\u001b[41m'+'\u001b[31m' + '█'
-    elif char == 'G':
+    elif char == '¶':
         backlog = '\u001b[42m'
         return '\u001b[0m'+'\u001b[42m'+'\u001b[32m' + '█'
-    elif char == 'Y':
+    elif char == 'Ą':
         backlog = '\u001b[43m'
         return '\u001b[0m'+'\u001b[43m'+'\u001b[33m' + '█'
-    elif char == 'D':
+    elif char == 'º':
         backlog = '\u001b[40m'
         return '\u001b[0m'+'\u001b[40m'+'\u001b[30m' + '█'
-    elif char == 'C':
+    elif char == '¸':
         backlog = '\u001b[46m'
         return '\u001b[0m'+'\u001b[46m'+'\u001b[36m' + '█'
-    elif char == 'W':
+    elif char == 'Į':
         backlog = '\u001b[47m'
         return '\u001b[0m'+'\u001b[47m'+'\u001b[37m' + '█'
-    elif char == '-':
+    elif char == 'ŀ':
         return '\n'
     elif char == '+':
         refs(FP)
