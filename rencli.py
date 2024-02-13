@@ -68,25 +68,25 @@ def color_char(char,shadow=0):
     else:print('\u001b[31mBadShadowConf:',shadow);exit()
     if char == '§':
         backlog = '\u001b[44m'
-        return '\u001b[0m'+('\u001b[44m' if shadow == 0 else '')+'\u001b[34m' + vj
+        return '\u001b[0m'+('\u001b[44m' if shadow == 0 else '')+'\u001b[34m' + vj + '\u001b[0m'
     elif char == '¦':
         backlog = '\u001b[41m'
-        return '\u001b[0m'+('\u001b[41m' if shadow == 0 else '')+'\u001b[31m' + vj
+        return '\u001b[0m'+('\u001b[41m' if shadow == 0 else '')+'\u001b[31m' + vj + '\u001b[0m'
     elif char == '¶':
         backlog = '\u001b[42m'
-        return '\u001b[0m'+('\u001b[42m' if shadow == 0 else '')+'\u001b[32m' + vj
+        return '\u001b[0m'+('\u001b[42m' if shadow == 0 else '')+'\u001b[32m' + vj + '\u001b[0m'
     elif char == 'Ą':
         backlog = '\u001b[43m'
-        return '\u001b[0m'+('\u001b[43m' if shadow == 0 else '')+'\u001b[33m' + vj
+        return '\u001b[0m'+('\u001b[43m' if shadow == 0 else '')+'\u001b[33m' + vj + '\u001b[0m'
     elif char == 'º':
         backlog = '\u001b[40m'
-        return '\u001b[0m'+('\u001b[40m' if shadow == 0 else '')+'\u001b[30m' + vj
+        return '\u001b[0m'+('\u001b[40m' if shadow == 0 else '')+'\u001b[30m' + vj + '\u001b[0m'
     elif char == '¸':
         backlog = '\u001b[46m'
-        return '\u001b[0m'+('\u001b[46m' if shadow == 0 else '')+'\u001b[36m' + vj
+        return '\u001b[0m'+('\u001b[46m' if shadow == 0 else '')+'\u001b[36m' + vj + '\u001b[0m'
     elif char == 'Į':
         backlog = '\u001b[47m'
-        return '\u001b[0m'+('\u001b[47m' if shadow == 0 else '')+'\u001b[37m' + vj
+        return '\u001b[0m'+('\u001b[47m' if shadow == 0 else '')+'\u001b[37m' + vj + '\u001b[0m'
     elif char == 'ŀ':
         return '\n'
     elif char == 'ę':
@@ -200,3 +200,7 @@ def vidx(vpath, fps, reso):
   cv2.destroyAllWindows()
 
 #renweb('https://upload.wikimedia.org/wikipedia/commons/thumb/a/a3/ThinkCentre_S50.jpg/800px-ThinkCentre_S50.jpg',100,save='Test',dr=True)
+prinx(("Į"*32)+"ŀ",sha=0)
+prinx(("Į"*32)+"ŀ",sha=1)
+prinx(("Į"*32)+"ŀ",sha=2)
+prinx(("Į"*32)+"ŀ",sha=3)
