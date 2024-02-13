@@ -1,4 +1,4 @@
-#RenCLI - ver1.4.4
+#RenCLI - ver1.4.6
 import os
 import time as tm
 import random
@@ -172,4 +172,26 @@ def renweb(url,piXY,save=None,dr=False):
     if dr==False:image2rencli(fname,piXY)
     elif dr==True:imgx(fname, piXY)
     else:image2rencli(fname,piXY)
+
+#Beta
+def vidx(vpath, fps, reso):
+  try:import matplotlib.pyplot as plt
+  except:print('\033[93mpip install matplotlib');fl=True
+  try:from PIL import Image
+  except:print('\033[93mpip install Image');fl=True
+  try:import cv2
+  except:print('\033[93mpip install opencv-python');fl=True
+  try:import numpy as np
+  except:print('\033[93mpip install numpy');fl=True
+  if fl == True:exit()
+  cap = cv2.VideoCapture(vpath)
+  for i in range(fps):
+    ret, frame = cap.read()
+    if not ret:
+        break
+    imgx(frame, reso)
+    cv2.waitKey(1)
+  cap.release()
+  cv2.destroyAllWindows()
+
 #renweb('https://upload.wikimedia.org/wikipedia/commons/thumb/a/a3/ThinkCentre_S50.jpg/800px-ThinkCentre_S50.jpg',100,save='Test',dr=True)
