@@ -65,6 +65,7 @@ def color_char(char,shadow=0):
     elif shadow == 1: vj = '▓'
     elif shadow == 2: vj = '▒'
     elif shadow == 3: vj = '░'
+    elif shadow == str(shadow): vj = shadow
     else:print('\u001b[31mBadShadowConf:',shadow);exit()
     if char == '§':
         backlog = '\u001b[44m'
