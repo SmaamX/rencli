@@ -6,9 +6,7 @@ import sys
 import platform
 
 cus = ['Ę',"\u001b[31m"]
-backlog = ''
 FP = 200
-
 backlog=''
 tex=''
 bol=False
