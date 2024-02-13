@@ -11,6 +11,7 @@ backlog=''
 tex=''
 bol=False
 mand = True
+
 def cuscol(lis=['Ę','\u001b[30;1m'],fp2=200,back='',text=['\u001b[30;1m',True],manr=True):
     global mand
     global cus
@@ -143,6 +144,7 @@ def image2rencli(im,piXY,show=False):
         plt.imshow(data)
         plt.show()
     return image
+
 def imgx(im,piXY,show=False):
     s=show
     sys.stdout.write(image2rencli(im,piXY,show=s))
