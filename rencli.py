@@ -200,7 +200,3 @@ def vidx(vpath, fps, reso):
   cv2.destroyAllWindows()
 
 #renweb('https://upload.wikimedia.org/wikipedia/commons/thumb/a/a3/ThinkCentre_S50.jpg/800px-ThinkCentre_S50.jpg',100,save='Test',dr=True)
-prinx(("Į"*32)+"ŀ",sha=0)
-prinx(("Į"*32)+"ŀ",sha=1)
-prinx(("Į"*32)+"ŀ",sha=2)
-prinx(("Į"*32)+"ŀ",sha=3)
