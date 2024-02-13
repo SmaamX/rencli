@@ -28,7 +28,7 @@ def cuscol(lis=['Ę','\u001b[30;1m'],fp2=200,back='',text=['\u001b[30;1m',True],
     chn(back, str)
     backlog = back
     chn(lis,list)
-    if 'B' in lis or 'R' in lis or 'G' in lis or 'Y' in lis or 'D' in lis or 'C' in lis or 'W' in lis or '-' in lis or '_' in lis:
+    if ['§','¦','¶','Ą','º','¸','Į','ŀ','ę'] in lis:
         cuser = lis
         print('\033[93m'+'Duplicate:',cuser)
     else:
