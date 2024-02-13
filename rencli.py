@@ -5,7 +5,7 @@ import random
 import sys
 import platform
 
-cus = ['T',"\u001b[31m"]
+cus = ['Ę',"\u001b[31m"]
 backlog = ''
 FP = 200
 
@@ -13,7 +13,7 @@ backlog=''
 tex=''
 bol=False
 mand = True
-def cuscol(lis=['T','\u001b[30;1m'],fp2=200,back='',text=['\u001b[30;1m',True],manr=True):
+def cuscol(lis=['Ę','\u001b[30;1m'],fp2=200,back='',text=['\u001b[30;1m',True],manr=True):
     global mand
     global cus
     global FP
@@ -85,7 +85,7 @@ def color_char(char):
         return '\u001b[0m'+'\u001b[47m'+'\u001b[37m' + '█'
     elif char == 'ŀ':
         return '\n'
-    elif char == '+':
+    elif char == 'ę':
         refs(FP)
         return ''
     elif char in cus:
