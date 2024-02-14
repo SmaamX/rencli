@@ -1,4 +1,5 @@
-#RenCLI - ver1.4.6
+#RenCLI - ver1.4.7
+# -*- coding: utf-8 -*- 
 import os
 import time as tm
 import random
