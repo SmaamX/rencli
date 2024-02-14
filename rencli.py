@@ -164,7 +164,7 @@ def renweb(url,piXY,save=None,dr=False):
     except:print('\033[93mpip install requests');ft=True
     from random import randint
     try:from PIL import Image
-    except:print('\033[93mpip install PIL');ft=True
+    except:print('\033[93mpip install pillow');ft=True
     from io import BytesIO
     if ft==True:exit()
     try:r = requests.get(url)
