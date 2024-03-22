@@ -104,7 +104,8 @@ def color_char(char,shadow=0):
             '\u001b[0m' + '\033[1m' + '\u001b[7m' + tex + char
 
 def colz(chars,shadow=0,mand=False):
-    return ''.join(color_char(c,shadow) for c in chars)
+    try:return ''.join(color_char(c,shadow) for c in chars)
+    else TypeError:print('\u001b[31mNanType:')
 
 def random_noise(length, chars):
     chn(chars,list)
