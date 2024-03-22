@@ -105,7 +105,7 @@ def color_char(char,shadow=0):
 
 def colz(chars,shadow=0,mand=False):
     try:return ''.join(color_char(c,shadow) for c in chars)
-    except TypeError:print('\u001b[31mNanType:')
+    except TypeError:print('\u001b[31mNanType:');exit(0)
 
 def random_noise(length, chars):
     chn(chars,list)
