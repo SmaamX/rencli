@@ -56,7 +56,7 @@ def chn(x,typ):
     except:print('\u001b[31mBadInpTyp',x,typ)
 
 def chpar(x):
-    if '-' in x or '+' in x:
+    if ['ŀ','ę'] in x:
         print('\u001b[31mTwoInp:',x)
         exit()
 
