@@ -6,12 +6,12 @@ import random
 import sys
 import platform
 
-cus = ['Ę',"\u001b[31m"]
-FP = 200
-backlog=''
-tex=''
-bol=False
-mand = True
+# cus = ['Ę',"\u001b[31m"]
+# FP = 200
+# backlog=''
+# tex=''
+# bol=False
+# mand = True
 
 def cuscol(lis=['Ę','\u001b[30;1m'],fp2=200,back='',text=['\u001b[30;1m',True],manr=True):
     global mand
