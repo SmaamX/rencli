@@ -1,4 +1,4 @@
-#RenCLI - ver1.4.7
+#RenCLI - ver1.4.8
 # -*- coding: utf-8 -*- 
 import os
 import time as tm
@@ -96,7 +96,7 @@ def color_char(char,shadow=0):
         return ''
     elif char in cus:
         ind = cus.index(char)
-        return cus[ind+1] + '█'
+        return cus[ind+1] + vj
     else:
         if backlog != '':
             return '\u001b[0m' + '\033[1m' + backlog + tex + char
