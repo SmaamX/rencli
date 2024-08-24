@@ -13,7 +13,7 @@ tex=''
 bol = False
 mand = True
 
-def cuscol(lis=['Ę','\u001b[30;1m'],fp2=200,back='',text=['\u001b[30;1m',True],manr=True):
+def cuscol(lis=['Ę','\u001b[30;1m'],fp2=200,back='',text=['\u001b[30;1m',True],manr=True)  -> None:
     global mand
     global cus
     global FP
@@ -37,7 +37,7 @@ def cuscol(lis=['Ę','\u001b[30;1m'],fp2=200,back='',text=['\u001b[30;1m',True],
     chn(fp2,int)
     FP = fp2
 
-def refs(dela):
+def refs(dela) -> None:
     global mand
     dela = dela * (10 ** -3)
     tm.sleep(dela)
@@ -48,7 +48,8 @@ def refs(dela):
             os.system('cls')
         else:
             os.system('clear')
-def chn(x,typ):
+
+def chn(x,typ) -> None:
     try:
         if type(x) != typ:
             cuser = x
@@ -60,7 +61,7 @@ def chpar(x):
         print('\u001b[31mTwoInp:',x)
         exit()
 
-def color_char(char,shadow=0):
+def color_char(char,shadow=0) -> str:
     global backlog
     if shadow == 0: vj = '█'
     elif shadow == 1: vj = '▓'
@@ -103,11 +104,21 @@ def color_char(char,shadow=0):
         else:
             '\u001b[0m' + '\033[1m' + '\u001b[7m' + tex + char
 
-def colz(chars,shadow=0,mand=False):
-    try:return ''.join(color_char(c,shadow) for c in chars)
-    except TypeError:print('\u001b[31mNanType:');exit(0)
+def colz(chars,shadow=0,mand=False, lfix=False) -> str:
+    check_list = []
+    if lfix == True:
+        for i in chars:
+            if i != "ŀ":
+                check_list.append(i)
+            else:
+                check_list=check_list[:-1];check_list.append(i)
+        try:return ''.join(color_char(c,shadow) for c in check_list)
+        except TypeError:print('\u001b[31mNanType:');exit(0)
+    else:
+        try:return ''.join(color_char(c,shadow) for c in chars)
+        except TypeError:print('\u001b[31mNanType:');exit(0)
 
-def random_noise(length, chars):
+def random_noise(length, chars) -> str:
     chn(chars,list)
     chn(length,int)
     chpar(chars)
@@ -115,10 +126,10 @@ def random_noise(length, chars):
         print('\u001b[31mTwoInp:',chars);exit()
     return colz(''.join(random.choice(chars) for _ in range(length)))
 
-def prinx(image,sha=0):
-    sys.stdout.write(colz(image,shadow=sha))
+def prinx(image,sha=0,lfix=True):
+    sys.stdout.write(colz(image,shadow=sha,lfix=lfix))
 
-def image2rencli(im,piXY,show=False):
+def image2rencli(im,piXY,show=False) -> str:
     fl = False
     try:import matplotlib.pyplot as plt
     except:print('\033[93mpip install matplotlib');fl=True
@@ -159,7 +170,7 @@ def imgx(im,piXY,show=False):
 
 #imgx('test.png',50, show=False)
 
-def renweb(url,piXY,save=None,dr=False):
+def renweb(url,piXY,save=None,dr=False) -> None:
     ft=False
     try:import requests
     except:print('\033[93mpip install requests');ft=True
@@ -180,26 +191,5 @@ def renweb(url,piXY,save=None,dr=False):
     if dr==False:image2rencli(fname,piXY)
     elif dr==True:imgx(fname, piXY)
     else:image2rencli(fname,piXY)
-
-#Beta
-def vidx(vpath, fps, reso):
-  try:import matplotlib.pyplot as plt
-  except:print('\033[93mpip install matplotlib');fl=True
-  try:from PIL import Image
-  except:print('\033[93mpip install Image');fl=True
-  try:import cv2
-  except:print('\033[93mpip install opencv-python');fl=True
-  try:import numpy as np
-  except:print('\033[93mpip install numpy');fl=True
-  if fl == True:exit()
-  cap = cv2.VideoCapture(vpath)
-  for i in range(fps):
-    ret, frame = cap.read()
-    if not ret:
-        break
-    imgx(frame, reso)
-    cv2.waitKey(1)
-  cap.release()
-  cv2.destroyAllWindows()
 
 #renweb('https://upload.wikimedia.org/wikipedia/commons/thumb/a/a3/ThinkCentre_S50.jpg/800px-ThinkCentre_S50.jpg',100,save='Test',dr=True)
