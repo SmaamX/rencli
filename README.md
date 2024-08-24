@@ -12,5 +12,3 @@ A simple module for image and animation outputs in CLI
 + image2rencli('test.png',250, show=False) - return image in CLI
 + imgx() - image2rencli but direct print
 + renweb() - import image from web (renweb('http://google.com/test.jpg',100,save='Test',dr=True))
-+  vidx() - video output
-vidx(vpath, fps, reso)
