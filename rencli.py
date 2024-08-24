@@ -42,7 +42,7 @@ def refs(dela) -> None:
     dela = dela * (10 ** -3)
     tm.sleep(dela)
     if mand == False:
-        sys.stdout.write("\033[2K")
+        sys.stdout.write("\033[2K\r")
     else:
         if platform.system() == 'Windows':
             os.system('cls')
@@ -91,7 +91,7 @@ def color_char(char,shadow=0) -> str:
         backlog = '\u001b[47m'
         return '\u001b[0m'+('\u001b[47m' if shadow == 0 else '')+'\u001b[37m' + vj + '\u001b[0m'
     elif char == 'ŀ':
-        return '\n'
+        return '\r\n'
     elif char == 'ę':
         refs(FP)
         return ''
@@ -164,7 +164,7 @@ def image2rencli(im,piXY,show=False) -> str:
         plt.show()
     return image
 
-def imgx(im,piXY,show=False):
+def imgx(im,piXY,show=False) -> None:
     s=show
     sys.stdout.write(image2rencli(im,piXY,show=s))
 

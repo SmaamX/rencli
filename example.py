@@ -13,5 +13,5 @@ def welcome():
       e -= 1;v += 1
   anim_1("Ą","¦")
   anim_1("¦","¶",sha=1)
-  anim_1("¶","¸",sha=1)
+  anim_1("¶","¸",sha=2)
 welcome()
