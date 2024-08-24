@@ -94,7 +94,7 @@ def color_char(char,shadow=0) -> str:
         return '\r\n'
     elif char == 'ę':
         refs(FP)
-        return ''
+        return '\r'
     elif char in cus:
         ind = cus.index(char)
         return cus[ind+1] + vj
