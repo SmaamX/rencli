@@ -7,6 +7,7 @@ A simple module for image and animation outputs in CLI
 + refs() - Clears the console screen
 + random_noise() - Generates random colors
 + prinx() - sys.stdout.write(colz(image))
++ prinx2() - 2d outset
 + cuscol() - custom color, text color, etc.
   (cuscol(lis=['A','\033[93m',...]))
 + image2rencli('test.png',250, show=False) - return image in CLI
