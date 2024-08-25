@@ -130,7 +130,7 @@ def ren_colz(local_, refs=False, shadow=0) -> str:
     else:
         return data_temp_2
 
-def move_2list(listin, ind, mod, spee=0, speel=1):
+def move_2list(listin, ind, mod, spee=0, speel=1) -> list:
   if mod == 1:
     for i in range(len(listin)):
       for ii in listin[i]:
