@@ -118,6 +118,18 @@ def colz(chars,shadow=0,mand=False, lfix=False) -> str:
         try:return ''.join(color_char(c,shadow) for c in chars)
         except TypeError:print('\u001b[31mNanType:');exit(0)
 
+def ren_colz(local_, refs=False, shadow=0) -> str:
+    data_temp_2 = ""
+    for r in range(len(local_)):
+        for i in local_[r]:
+            data_temp_2 += color_char(str(i),shadow=shadow)
+        data_temp_2 += "\n"
+    if refs == True:
+        data_temp_2 += color_char("ę")
+        return data_temp_2
+    else:
+        return data_temp_2
+
 def random_noise(length, chars) -> str:
     chn(chars,list)
     chn(length,int)
@@ -126,8 +138,11 @@ def random_noise(length, chars) -> str:
         print('\u001b[31mTwoInp:',chars);exit()
     return colz(''.join(random.choice(chars) for _ in range(length)))
 
-def prinx(image,sha=0,lfix=True):
+def prinx(image,sha=0,lfix=True) -> None:
     sys.stdout.write(colz(image,shadow=sha,lfix=lfix))
+
+def prinx2(image,refs=True,sha=0):
+    sys.stdout.write(ren_colz(image,refs=refs,shadow=sha))
 
 def image2rencli(im,piXY,show=False) -> str:
     fl = False

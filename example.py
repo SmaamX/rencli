@@ -1,4 +1,4 @@
-from rencli import prinx, cuscol, color_char
+from rencli import prinx, cuscol, color_char, ren_colz, prinx2
 def welcome():
   cuscol(fp2=2000)
   prinx(((("Ą"*10)+"ŀ")*4)+"ę")
@@ -15,16 +15,7 @@ def welcome():
   anim_1("¦","¶",sha=1)
   anim_1("¶","¸",sha=2)
 
-def matrcli():
-    cuscol(lis=['2','\u001b[37m','1','\u001b[30;1m','0','\u001b[34m'])
-    local_player = [[1, 2, 0], [0, 0, 1], [1, 2, 0]]
-    data_temp_2 = ""
-    for r in range(len(local_player)):
-        for i in local_player[r]:
-            data_temp_2 += color_char(str(i),shadow=0)
-        color_char("ę")
-        data_temp_2 += "\n"
-    print(data_temp_2)
-
+cuscol(lis=['2','\u001b[37m','1','\u001b[30;1m','0','\u001b[34m'], fp2=500)
+prinx2([[1, 2, 0, 1], [0, 0, 1, 2], [1, 2, 0, 1]], refs=True)
+prinx2([[2, 1, 0, 1], [0, 0, 2, 1], [2, 1, 0, 2]], refs=True)
 welcome()
-matrcli()
