@@ -1,4 +1,4 @@
-from rencli import prinx, cuscol, color_char, ren_colz, prinx2
+from rencli import prinx, cuscol, color_char, ren_colz, prinx2, move_2list
 def welcome():
   cuscol(fp2=2000)
   prinx(((("Ą"*10)+"ŀ")*4)+"ę")
@@ -15,7 +15,19 @@ def welcome():
   anim_1("¦","¶",sha=1)
   anim_1("¶","¸",sha=2)
 
-cuscol(lis=['2','\u001b[37m','1','\u001b[30;1m','0','\u001b[34m'], fp2=500)
-prinx2([[1, 2, 0, 1], [0, 0, 1, 2], [1, 2, 0, 1]], refs=True)
-prinx2([[2, 1, 0, 1], [0, 0, 2, 1], [2, 1, 0, 2]], refs=True)
+def matr_move():
+  cuscol(lis=['2','\u001b[37m','1','\u001b[30;1m','0','\u001b[34m'], fp2=500)
+  test_list = [[0, 0, 0, 0], [0, 0, 1, 0], [0, 0, 0, 0]]
+  prinx2(test_list, refs=True)
+  for i in range(2):
+    move_2list(test_list, 1, 1)
+    prinx2(test_list, refs=True)
+  for i in range(1):
+    move_2list(test_list, 1, 2)
+    prinx2(test_list, refs=True)
+  for i in range(2):
+    test_list = move_2list(test_list, 1, 4)
+    prinx2(test_list, refs=True)
+  
+matr_move()
 welcome()

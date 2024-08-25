@@ -130,6 +130,51 @@ def ren_colz(local_, refs=False, shadow=0) -> str:
     else:
         return data_temp_2
 
+def move_2list(listin, ind, mod, spee=0, speel=1):
+  if mod == 1:
+    for i in range(len(listin)):
+      for ii in listin[i]:
+        try:
+          if ii == ind:
+            loc = listin[i].index(ind)-1-spee
+            listin[i].remove(ind)
+            listin[i].insert(loc,ind)
+            i = 1
+            if i == 1:
+              i += 1
+              continue #pass danger loops lol
+            elif i == 2:
+              i = 0
+        except:
+          pass
+  elif mod == 3:
+    for i in range(len(listin)):
+      for ii in listin[i]:
+        try:
+          if ii == ind:
+            loc = listin[i].index(ind)+1+spee
+            listin[i].remove(ind)
+            listin[i].insert(loc,ind)
+            i = 1
+            if i == 1:
+              i += 1
+              continue
+            elif i == 2:
+              i = 0
+        except:
+          pass
+  elif mod == 4:
+    for i in range(speel):
+      temp_list = listin[-1]
+      listin.pop(-1)
+      listin.insert(0,temp_list)
+  elif mod == 2:
+    for i in range(speel):
+      temp_list = listin[0]
+      listin.pop(0)
+      listin.append(temp_list)
+  return listin
+
 def random_noise(length, chars) -> str:
     chn(chars,list)
     chn(length,int)
