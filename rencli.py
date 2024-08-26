@@ -6,7 +6,7 @@ import random
 import sys
 import platform
 
-def d_list(list1,list2):
+def d_list(list1,list2) -> list:
     return [[x + y for x, y in zip(row1, row2)] for row1, row2 in zip(list1, list2)] #SO IMPORTANT
 
 cus = ['Ę',"\u001b[31m"]
