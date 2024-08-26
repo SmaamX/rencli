@@ -19,16 +19,14 @@ def welcome():
 def matr_move():
   cuscol(lis=['2','\u001b[37m','1','\u001b[30;1m','0','\u001b[34m'], fp2=500)
   test_list = [[0, 0, 0, 0], [0, 0, 1, 0], [0, 0, 0, 0]]
-  prinx2(test_list, refs=True)
+  test_list_back = [[0, 0, 1, 0], [0, 0, 1, 0], [0, 1, 0, 0]]
+  prinx2(d_list(test_list, test_list_back), refs=True)
   for i in range(2):
-    move_2list(test_list, 1, 1)
-    prinx2(test_list, refs=True)
+    prinx2(d_list(move_2list(test_list, 1, 1), test_list_back))
   for i in range(1):
-    move_2list(test_list, 1, 2)
-    prinx2(test_list, refs=True)
+    prinx2(d_list(move_2list(test_list, 1, 2), test_list_back))
   for i in range(2):
-    test_list = move_2list(test_list, 1, 4)
-    prinx2(test_list, refs=True)
+    prinx2(d_list(move_2list(test_list, 1, 4), test_list_back))
 
 matr_move()
 welcome()
