@@ -1,4 +1,4 @@
-from rencli import prinx, cuscol, color_char, ren_colz, prinx2, move_2list
+from rencli import prinx, cuscol, color_char, ren_colz, prinx2, move_2list, d_list
 
 def welcome():
   cuscol(fp2=2000)
