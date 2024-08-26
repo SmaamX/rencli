@@ -1,4 +1,5 @@
 from rencli import prinx, cuscol, color_char, ren_colz, prinx2, move_2list, d_list
+import keyboard
 
 def welcome():
   cuscol(fp2=2000)
@@ -18,15 +19,22 @@ def welcome():
 
 def matr_move():
   cuscol(lis=['2','\u001b[37m','1','\u001b[30;1m','0','\u001b[34m'], fp2=500)
-  test_list = [[0, 0, 0, 0], [0, 0, 1, 0], [0, 0, 0, 0]]
-  test_list_back = [[0, 0, 1, 0], [0, 0, 1, 0], [0, 1, 0, 0]]
+  test_list = [[0, 0, 0, 0, 0], [0, 0, 1, 0, 0], [0, 0, 0, 0, 0], [0, 0, 0, 0, 0], [0, 0, 0, 0, 0]]
+  test_list_back = [[0, 0, 1, 0, 0], [0, 0, 1, 0, 0], [0, 0, 0, 0, 0], [0, 0, 0, 0, 0], [0, 0, 0, 0, 0]]
   prinx2(d_list(test_list, test_list_back), refs=True)
-  for i in range(2):
+  def move1():
     prinx2(d_list(move_2list(test_list, 1, 1), test_list_back))
-  for i in range(1):
+    print(test_list)
+  def move2():
     prinx2(d_list(move_2list(test_list, 1, 2), test_list_back))
-  for i in range(2):
+  def move4():
     prinx2(d_list(move_2list(test_list, 1, 4), test_list_back))
+  def move3():
+    prinx2(d_list(move_2list(test_list, 1, 3), test_list_back))
+  keyboard.add_hotkey("w",move2)
+  keyboard.add_hotkey("d",move1)
+  keyboard.add_hotkey("a",move3)
+  keyboard.add_hotkey("s",move4)
+  keyboard.wait()
 
 matr_move()
-welcome()
