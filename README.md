@@ -15,7 +15,7 @@ A simple module for image and animation outputs in CLI
 ## Static render
 + image2rencli('test.png',250, show=False) - return image in CLI
 + imgx() - image2rencli but direct print
-+ renweb() - import image from web (renweb('http://google.com/test.jpg',100,save='Test',dr=True))
++ renweb() - import image from web
 
 ## List manager (dynamic render)
 + d_list(list1,list2) - combine two list directly
