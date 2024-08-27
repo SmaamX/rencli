@@ -152,8 +152,11 @@ def move_2list(listin, ind, mod, spee=0, speel=1, lback = [], final_rend=False, 
             else:
               if ii == ind:
                 loc = listin[i].index(ind)+1+spee
-                if found_ind == True:
-                  return listin[i].index(ind)
+                try:
+                  if found_ind == True:
+                    return listin[i].index(ind)
+                except IndexError:
+                    return -1
                 listin[i].remove(ind)
                 listin[i].insert(loc,ind)
             if len(listin)//2 == 0:
@@ -184,8 +187,11 @@ def move_2list(listin, ind, mod, spee=0, speel=1, lback = [], final_rend=False, 
             else:
               if ii == ind:
                 loc = listin[i].index(ind)-1-spee
-                if found_ind == True:
-                  return listin[i].index(ind)
+                try:
+                  if found_ind == True:
+                    return listin[i].index(ind)
+                except IndexError:
+                    return -1
                 listin[i].remove(ind)
                 listin[i].insert(loc,ind)
             i = 1
@@ -202,7 +208,10 @@ def move_2list(listin, ind, mod, spee=0, speel=1, lback = [], final_rend=False, 
         for ii in listin[i]:
           try:
             if ii == ind:
-              return listin.index(listin[i])
+              try:
+                return listin.index(listin[i])
+              except:
+                return listin.index(listin[i]-1)
           except:pass
     for i in range(speel):
       temp_list = listin[-1]
@@ -214,7 +223,10 @@ def move_2list(listin, ind, mod, spee=0, speel=1, lback = [], final_rend=False, 
         for ii in listin[i]:
           try:
             if ii == ind:
-              return listin.index(listin[i])
+              try:
+                return listin.index(listin[i])
+              except:
+                return listin.index(listin[i]-1)
           except:pass
     for i in range(speel):
       temp_list = listin[0]
