@@ -18,24 +18,42 @@ def welcome():
   anim_1("¶","¸",sha=2)
 
 def matr_move():
-  cuscol(lis=['2','\u001b[37m','1','\u001b[30;1m','0','\u001b[34m'], fp2=500)
-  test_list = [[0, 0, 0, 0, 0, 0, 0 ,0, 0], [0, 0, 0, 1, 0, 0, 0 ,0, 0], [0, 0, 0, 0, 0, 0, 0 ,0, 0], [0, 0, 0, 0, 0, 0, 0 ,0, 0], [0, 0, 0, 0, 0, 0, 0 ,0, 0]]
-  test_list_back = [[0, 0, 2, 0, 0, 0, 0 ,0, 0], [0, 0, 2, 0, 0, 0, 0 ,0, 0], [0, 0, 0, 0, 0, 0, 0 ,0, 0], [0, 0, 2, 0, 0, 0, 0 ,0, 0], [0, 0, 0, 0, 0, 0, 0 ,0, 0]]
-  prinx2(d_list(test_list, test_list_back), refs=True)
+  cuscol(lis=['4', '\u001b[33;1m', '3', '\u001b[33;1m', '2','\u001b[37m','1','\u001b[30;1m','0','\u001b[34m'], fp2=500)
+  test_list = [[0, 0, 0, 0, 0, 0, 0 ,0, 0], [0, 0, 0, 1, 0, 0, 0 ,0, 0], [0, 0, 0, 0, 0, 0, 0 ,0, 0], [0, 0, 0, 0, 0, 0, 0 ,0, 0], [0, 0, 0, 0, 0, 0, 0 ,0, 0], [0, 0, 0, 0, 0, 0, 0 ,0, 0]]
+  item_list = [[0, 0, 0, 0, 0, 0, 0 ,0, 0], [0, 0, 0, 0, 0, 0, 0 ,0, 0], [0, 0, 0, 0, 0, 0, 0 ,0, 0], [0, 0, 0, 0, 0, 0, 0 ,0, 0], [0, 0, 0, 0, 0, 0, 0 ,3, 0], [0, 0, 0, 0, 0, 0, 0 ,0, 0]]
+  test_list_back = [[0, 0, 2, 0, 0, 0, 0 ,0, 0], [0, 0, 2, 0, 0, 0, 0 ,0, 0], [0, 0, 0, 0, 0, 0, 0 ,0, 0], [0, 0, 2, 0, 0, 0, 0 ,0, 0], [0, 0, 0, 0, 0, 0, 0 ,0, 0], [0, 0, 0, 0, 0, 0, 0 ,0, 0]]
+  prinx2(d_list((d_list(test_list, test_list_back)), item_list), refs=True)
+  item = 3
   wall = 2
   rate = 1
   def move1():
     if move_2list(test_list, 1, 1, found_ind=True) <= len(test_list[0]) and (test_list_back[move_2list(test_list, rate, 2, found_ind='y')][move_2list(test_list, rate, 3, found_ind=True)+1] != wall) if move_2list(test_list, rate, 3, found_ind=True) != len(test_list_back[0])-1 else False:
-      prinx2(d_list(move_2list(test_list, rate, 1), test_list_back))
+      if item_list[move_2list(test_list, rate, 2, found_ind='y')][move_2list(test_list, rate, 3, found_ind=True)+1] == item if move_2list(test_list, rate, 3, found_ind=True) != len(test_list_back[0])-1 else False:
+        prinx2(d_list(d_list(move_2list(test_list, rate, 1), test_list_back),item_list))
+        print("You w0n");exit()
+      else:
+        prinx2(d_list(d_list(move_2list(test_list, rate, 1), test_list_back),item_list))
   def move2():
-    if move_2list(test_list, 1, 2, found_ind='y') >= 1 and test_list_back[move_2list(test_list, rate, 2, found_ind='y')-1][move_2list(test_list, rate, 3, found_ind=True)] != wall:
-      prinx2(d_list(move_2list(test_list, rate, 2), test_list_back))
+    if move_2list(test_list, 1, 2, found_ind='y')-1 >= 0 and test_list_back[move_2list(test_list, rate, 2, found_ind='y')-1][move_2list(test_list, rate, 3, found_ind=True)] != wall:
+      if item_list[move_2list(test_list, rate, 2, found_ind='y')-1][move_2list(test_list, rate, 3, found_ind=True)] == item:
+        prinx2(d_list(d_list(move_2list(test_list, rate, 2), test_list_back),item_list))
+        print("You w0n");exit()
+      else:
+        prinx2(d_list(d_list(move_2list(test_list, rate, 2), test_list_back),item_list))
   def move4():
     if move_2list(test_list, 1, 4, found_ind='y') <= len(test_list[0])-2 and (test_list_back[move_2list(test_list, rate, 2, found_ind='y')+1][move_2list(test_list, rate, 3, found_ind=True)] != wall) if move_2list(test_list, rate, 4, found_ind='y') != len(test_list)-1 else False:
-      prinx2(d_list(move_2list(test_list, rate, 4), test_list_back))
+      if item_list[move_2list(test_list, rate, 2, found_ind='y')+1][move_2list(test_list, rate, 3, found_ind=True)] == item if move_2list(test_list, rate, 4, found_ind='y') != len(test_list)-1 else False:
+        prinx2(d_list(d_list(move_2list(test_list, rate, 4), test_list_back),item_list))
+        print("You w0n");exit()
+      else:
+        prinx2(d_list(d_list(move_2list(test_list, rate, 4), test_list_back),item_list))
   def move3():
     if move_2list(test_list, 1, 3, found_ind=True) >= 1 and (test_list_back[move_2list(test_list, rate, 2, found_ind='y')][move_2list(test_list, rate, 3, found_ind=True)-1] != wall) if move_2list(test_list, rate, 1, found_ind=True) != 0 else False:
-      prinx2(d_list(move_2list(test_list, rate, 3), test_list_back))
+      if item_list[move_2list(test_list, rate, 2, found_ind='y')][move_2list(test_list, rate, 3, found_ind=True)-1] == item if move_2list(test_list, rate, 1, found_ind=True) != 0 else False:
+        prinx2(d_list(d_list(move_2list(test_list, rate, 3), test_list_back),item_list))
+        print("You w0n");exit()
+      else:
+        prinx2(d_list(d_list(move_2list(test_list, rate, 3), test_list_back),item_list))
   keyboard.add_hotkey("w",move2)
   keyboard.add_hotkey("d",move1)
   keyboard.add_hotkey("a",move3)
