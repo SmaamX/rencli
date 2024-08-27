@@ -1,4 +1,4 @@
-from rencli import prinx, cuscol, color_char, ren_colz, prinx2, move_2list, d_list, check_r, check_l, check_d, check_u
+from rencli import prinx, cuscol, color_char, ren_colz, prinx2, move_2list, d_list, check_vi
 import keyboard
 
 def welcome():
@@ -27,29 +27,29 @@ def matr_move():
   wall = 2
   rate = 1
   def move1():
-    if check_r(test_list, test_list_back, rate, wall, False):
-      if check_r(test_list, item_list, rate, item, True):
+    if check_vi.check_r(test_list, test_list_back, rate, wall, False):
+      if check_vi.check_r(test_list, item_list, rate, item, True):
         prinx2(d_list(d_list(move_2list(test_list, rate, 1), test_list_back),item_list))
         print("You w0n");exit()
       else:
         prinx2(d_list(d_list(move_2list(test_list, rate, 1), test_list_back),item_list))
   def move2():
-    if check_u(test_list, test_list_back, rate, wall, False):
-      if check_u(test_list, item_list, rate, item, True):
+    if check_vi.check_u(test_list, test_list_back, rate, wall, False):
+      if check_vi.check_u(test_list, item_list, rate, item, True):
         prinx2(d_list(d_list(move_2list(test_list, rate, 2), test_list_back),item_list))
         print("You w0n");exit()
       else:
         prinx2(d_list(d_list(move_2list(test_list, rate, 2), test_list_back),item_list))
   def move4():
-    if check_d(test_list, test_list_back, rate, wall, False):
-      if check_d(test_list, item_list, rate, item, True):
+    if check_vi.check_d(test_list, test_list_back, rate, wall, False):
+      if check_vi.check_d(test_list, item_list, rate, item, True):
         prinx2(d_list(d_list(move_2list(test_list, rate, 4), test_list_back),item_list))
         print("You w0n");exit()
       else:
         prinx2(d_list(d_list(move_2list(test_list, rate, 4), test_list_back),item_list))
   def move3():
-    if check_l(test_list, test_list_back, rate, wall, False):
-      if check_l(test_list, item_list, rate, item, True):
+    if check_vi.check_l(test_list, test_list_back, rate, wall, False):
+      if check_vi.check_l(test_list, item_list, rate, item, True):
         prinx2(d_list(d_list(move_2list(test_list, rate, 3), test_list_back),item_list))
         print("You w0n");exit()
       else:
