@@ -134,12 +134,14 @@ def ren_colz(local_, refs=False, shadow=0) -> str:
         return data_temp_2
 
 #a lite final rend 
-def move_2list(listin, ind, mod, spee=0, speel=1, emp=0, lback = [], final_rend=False) -> list:
+def move_2list(listin, ind, mod, spee=0, speel=1, emp=0, lback = [], final_rend=False, found_ind=False) -> list:
   if mod == 1:
     for i in range(len(listin)):
       for ii in listin[i]:
         try:
           if ii == ind:
+            if found_ind == "debug":
+              return listin[i].index(ind)
             if final_rend == True:
               loc = listin[i].index(ind)+1+spee
               listin[i].remove(ind)
@@ -150,6 +152,8 @@ def move_2list(listin, ind, mod, spee=0, speel=1, emp=0, lback = [], final_rend=
             else:
               if ii == ind:
                 loc = listin[i].index(ind)+1+spee
+                if found_ind == True:
+                  return loc
                 listin[i].remove(ind)
                 listin[i].insert(loc,ind)
             i = -len(listin[ii])-2
@@ -165,6 +169,8 @@ def move_2list(listin, ind, mod, spee=0, speel=1, emp=0, lback = [], final_rend=
       for ii in listin[i]:
         try:
           if ii == ind:
+            if found_ind == "debug":
+              return listin[i].index(ind)
             if final_rend == True:
               loc = listin[i].index(ind)-1-spee
               listin[i].remove(ind)
@@ -175,6 +181,8 @@ def move_2list(listin, ind, mod, spee=0, speel=1, emp=0, lback = [], final_rend=
             else:
               if ii == ind:
                 loc = listin[i].index(ind)-1-spee
+                if found_ind == True:
+                  return loc
                 listin[i].remove(ind)
                 listin[i].insert(loc,ind)
             i = 1

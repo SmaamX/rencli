@@ -22,15 +22,17 @@ def matr_move():
   test_list = [[0, 0, 0, 0, 0], [0, 0, 1, 0, 0], [0, 0, 0, 0, 0], [0, 0, 0, 0, 0], [0, 0, 0, 0, 0]]
   test_list_back = [[0, 0, 1, 0, 0], [0, 0, 1, 0, 0], [0, 0, 0, 0, 0], [0, 0, 0, 0, 0], [0, 0, 0, 0, 0]]
   prinx2(d_list(test_list, test_list_back), refs=True)
+  rate = 1
   def move1():
-    prinx2(d_list(move_2list(test_list, 1, 1), test_list_back))
-    print(test_list)
+    if move_2list(test_list, 1, 1, found_ind=True) <= len(test_list[0]):
+      prinx2(d_list(move_2list(test_list, rate, 1), test_list_back))
   def move2():
-    prinx2(d_list(move_2list(test_list, 1, 2), test_list_back))
+    prinx2(d_list(move_2list(test_list, rate, 2), test_list_back))
   def move4():
-    prinx2(d_list(move_2list(test_list, 1, 4), test_list_back))
+    prinx2(d_list(move_2list(test_list, rate, 4), test_list_back))
   def move3():
-    prinx2(d_list(move_2list(test_list, 1, 3), test_list_back))
+    if move_2list(test_list, 1, 3, found_ind=True) >= 0:
+      prinx2(d_list(move_2list(test_list, rate, 3), test_list_back))
   keyboard.add_hotkey("w",move2)
   keyboard.add_hotkey("d",move1)
   keyboard.add_hotkey("a",move3)
