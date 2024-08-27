@@ -153,7 +153,7 @@ def move_2list(listin, ind, mod, spee=0, speel=1, lback = [], final_rend=False, 
               if ii == ind:
                 loc = listin[i].index(ind)+1+spee
                 if found_ind == True:
-                  return loc
+                  return listin[i].index(ind)
                 listin[i].remove(ind)
                 listin[i].insert(loc,ind)
             if len(listin)//2 == 0:
@@ -185,7 +185,7 @@ def move_2list(listin, ind, mod, spee=0, speel=1, lback = [], final_rend=False, 
               if ii == ind:
                 loc = listin[i].index(ind)-1-spee
                 if found_ind == True:
-                  return loc
+                  return listin[i].index(ind)
                 listin[i].remove(ind)
                 listin[i].insert(loc,ind)
             i = 1

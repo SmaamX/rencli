@@ -19,22 +19,34 @@ def welcome():
 
 def matr_move():
   cuscol(lis=['2','\u001b[37m','1','\u001b[30;1m','0','\u001b[34m'], fp2=500)
-  test_list = [[0, 0, 0, 0, 0], [0, 0, 1, 0, 0], [0, 0, 0, 0, 0], [0, 0, 0, 0, 0], [0, 0, 0, 0, 0]]
-  test_list_back = [[0, 0, 1, 0, 0], [0, 0, 1, 0, 0], [0, 0, 0, 0, 0], [0, 0, 0, 0, 0], [0, 0, 0, 0, 0]]
+  test_list = [[0, 0, 0, 0, 0], [0, 0, 0, 1, 0], [0, 0, 0, 0, 0], [0, 0, 0, 0, 0], [0, 0, 0, 0, 0]]
+  test_list_back = [[0, 0, 2, 0, 0], [0, 0, 2, 0, 0], [0, 0, 0, 0, 0], [0, 0, 0, 0, 0], [0, 0, 0, 0, 0]]
   prinx2(d_list(test_list, test_list_back), refs=True)
   rate = 1
   def move1():
-    if move_2list(test_list, 1, 1, found_ind=True) <= len(test_list[0]):
-      prinx2(d_list(move_2list(test_list, rate, 1), test_list_back))
-  def move2():
-    if move_2list(test_list, 1, 2, found_ind='y') >= 1:
-      prinx2(d_list(move_2list(test_list, rate, 2), test_list_back))
-  def move4():
-    if move_2list(test_list, 1, 2, found_ind='y') <= len(test_list[0])-2:
-      prinx2(d_list(move_2list(test_list, rate, 4), test_list_back))
-  def move3():
-    if move_2list(test_list, 1, 3, found_ind=True) >= 0:
+    try:
+      if move_2list(test_list, 1, 1, found_ind=True) <= len(test_list[0]):
+        prinx2(d_list(move_2list(test_list, rate, 1), test_list_back))
+    except TypeError: #wall_track
       prinx2(d_list(move_2list(test_list, rate, 3), test_list_back))
+  def move2():
+    try:
+      if move_2list(test_list, 1, 2, found_ind='y') >= 1:
+        prinx2(d_list(move_2list(test_list, rate, 2), test_list_back))
+    except TypeError:
+      prinx2(d_list(move_2list(test_list, rate, 4), test_list_back))
+  def move4():
+    try:
+      if move_2list(test_list, 1, 4, found_ind='y') <= len(test_list[0])-2:
+        prinx2(d_list(move_2list(test_list, rate, 4), test_list_back))
+    except TypeError:
+      prinx2(d_list(move_2list(test_list, rate, 2), test_list_back))
+  def move3():
+    try:
+      if move_2list(test_list, 1, 3, found_ind=True) >= 1:
+        prinx2(d_list(move_2list(test_list, rate, 3), test_list_back))
+    except TypeError:
+      prinx2(d_list(move_2list(test_list, rate, 1), test_list_back))
   keyboard.add_hotkey("w",move2)
   keyboard.add_hotkey("d",move1)
   keyboard.add_hotkey("a",move3)
