@@ -134,7 +134,7 @@ def ren_colz(local_, refs=False, shadow=0) -> str:
         return data_temp_2
 
 #a lite final rend 
-def move_2list(listin, ind, mod, spee=0, speel=1, emp=0, lback = [], final_rend=False, found_ind=False) -> list:
+def move_2list(listin, ind, mod, spee=0, speel=1, lback = [], final_rend=False, found_ind=False) -> list:
   if mod == 1:
     for i in range(len(listin)):
       for ii in listin[i]:
