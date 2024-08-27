@@ -9,6 +9,30 @@ import platform
 def d_list(list1,list2) -> list:
     return [[x + y for x, y in zip(row1, row2)] for row1, row2 in zip(list1, list2)] #SO IMPORTANT
 
+def check_r(test_list, test_list_back, rate, wall, isisnt) -> bool:
+  if isisnt == True:
+    return move_2list(test_list, 1, 1, found_ind=True) <= len(test_list[0]) and (test_list_back[move_2list(test_list, rate, 2, found_ind='y')][move_2list(test_list, rate, 3, found_ind=True)+1] == wall) if move_2list(test_list, rate, 3, found_ind=True) != len(test_list_back[0])-1 else False
+  elif isisnt == False:
+    return move_2list(test_list, 1, 1, found_ind=True) <= len(test_list[0]) and (test_list_back[move_2list(test_list, rate, 2, found_ind='y')][move_2list(test_list, rate, 3, found_ind=True)+1] != wall) if move_2list(test_list, rate, 3, found_ind=True) != len(test_list_back[0])-1 else False
+
+def check_l(test_list, test_list_back, rate, wall, isisnt) -> bool:
+  if isisnt == True:
+    return test_list_back[move_2list(test_list, rate, 2, found_ind='y')][move_2list(test_list, rate, 3, found_ind=True)-1] == wall if move_2list(test_list, rate, 1, found_ind=True) != 0 else False
+  elif isisnt == False:
+    return move_2list(test_list, 1, 3, found_ind=True) >= 1 and (test_list_back[move_2list(test_list, rate, 2, found_ind='y')][move_2list(test_list, rate, 3, found_ind=True)-1] != wall) if move_2list(test_list, rate, 1, found_ind=True) != 0 else False
+
+def check_u(test_list, test_list_back, rate, wall, isisnt) -> bool:
+  if isisnt == True:
+    return test_list_back[move_2list(test_list, rate, 2, found_ind='y')-1][move_2list(test_list, rate, 3, found_ind=True)] == wall
+  elif isisnt == False:
+    return move_2list(test_list, 1, 2, found_ind='y')-1 >= 0 and test_list_back[move_2list(test_list, rate, 2, found_ind='y')-1][move_2list(test_list, rate, 3, found_ind=True)] != wall
+
+def check_d(test_list, test_list_back, rate, wall, isisnt) -> bool:
+  if isisnt == True:
+    return test_list_back[move_2list(test_list, rate, 2, found_ind='y')+1][move_2list(test_list, rate, 3, found_ind=True)] == wall if move_2list(test_list, rate, 4, found_ind='y') != len(test_list)-1 else False
+  elif isisnt == False:
+    return move_2list(test_list, 1, 4, found_ind='y') <= len(test_list[0])-2 and (test_list_back[move_2list(test_list, rate, 2, found_ind='y')+1][move_2list(test_list, rate, 3, found_ind=True)] != wall) if move_2list(test_list, rate, 4, found_ind='y') != len(test_list)-1 else False
+
 cus = ['Ę',"\u001b[31m"]
 FP = 200
 backlog = ''
