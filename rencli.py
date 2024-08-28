@@ -13,9 +13,9 @@ class check_vi():
   def check_r(test_list, test_list_back, rate, wall, isisnt, r=1, warn = False) -> bool:
     try:
       if isisnt == True:
-        return move_2list(test_list, 1, 1, found_ind=True) <= len(test_list[0]) and (test_list_back[move_2list(test_list, rate, 2, found_ind='y')][move_2list(test_list, rate, 3, found_ind=True)+r] == wall) if move_2list(test_list, rate, 3, found_ind=True) != len(test_list_back[0])-1 else False
+        return move_2list(test_list, rate, 1, found_ind=True) <= len(test_list[0]) and (test_list_back[move_2list(test_list, rate, 2, found_ind='y')][move_2list(test_list, rate, 3, found_ind=True)+r] == wall) if move_2list(test_list, rate, 3, found_ind=True) != len(test_list_back[0])-1 else False
       elif isisnt == False:
-        return move_2list(test_list, 1, 1, found_ind=True) <= len(test_list[0]) and (test_list_back[move_2list(test_list, rate, 2, found_ind='y')][move_2list(test_list, rate, 3, found_ind=True)+r] != wall) if move_2list(test_list, rate, 3, found_ind=True) != len(test_list_back[0])-1 else False
+        return move_2list(test_list, rate, 1, found_ind=True) <= len(test_list[0]) and (test_list_back[move_2list(test_list, rate, 2, found_ind='y')][move_2list(test_list, rate, 3, found_ind=True)+r] != wall) if move_2list(test_list, rate, 3, found_ind=True) != len(test_list_back[0])-1 else False
     except IndexError:
         if warn == True:
           print('\033[93m'+'Bad-r-Conf', r)
@@ -25,7 +25,7 @@ class check_vi():
       if isisnt == True:
         return test_list_back[move_2list(test_list, rate, 2, found_ind='y')][move_2list(test_list, rate, 3, found_ind=True)-r] == wall if move_2list(test_list, rate, 1, found_ind=True) != 0 else False
       elif isisnt == False:
-        return move_2list(test_list, 1, 3, found_ind=True) >= 1 and (test_list_back[move_2list(test_list, rate, 2, found_ind='y')][move_2list(test_list, rate, 3, found_ind=True)-r] != wall) if move_2list(test_list, rate, 1, found_ind=True) != 0 else False
+        return move_2list(test_list, rate, 3, found_ind=True) >= 1 and (test_list_back[move_2list(test_list, rate, 2, found_ind='y')][move_2list(test_list, rate, 3, found_ind=True)-r] != wall) if move_2list(test_list, rate, 1, found_ind=True) != 0 else False
     except IndexError:
         if warn == True:
           print('\033[93m'+'Bad-r-Conf', r)
@@ -35,7 +35,7 @@ class check_vi():
       if isisnt == True:
         return test_list_back[move_2list(test_list, rate, 2, found_ind='y')-r][move_2list(test_list, rate, 3, found_ind=True)] == wall
       elif isisnt == False:
-        return move_2list(test_list, 1, 2, found_ind='y')-1 >= 0 and test_list_back[move_2list(test_list, rate, 2, found_ind='y')-r][move_2list(test_list, rate, 3, found_ind=True)] != wall
+        return move_2list(test_list, rate, 2, found_ind='y')-1 >= 0 and test_list_back[move_2list(test_list, rate, 2, found_ind='y')-r][move_2list(test_list, rate, 3, found_ind=True)] != wall
     except IndexError:
         if warn == True:
           print('\033[93m'+'Bad-r-Conf', r)
@@ -45,7 +45,7 @@ class check_vi():
       if isisnt == True:
         return test_list_back[move_2list(test_list, rate, 2, found_ind='y')+r][move_2list(test_list, rate, 3, found_ind=True)] == wall if move_2list(test_list, rate, 4, found_ind='y') != len(test_list)-1 else False
       elif isisnt == False:
-        return move_2list(test_list, 1, 4, found_ind='y') <= len(test_list[0])-2 and (test_list_back[move_2list(test_list, rate, 2, found_ind='y')+r][move_2list(test_list, rate, 3, found_ind=True)] != wall) if move_2list(test_list, rate, 4, found_ind='y') != len(test_list)-1 else False
+        return move_2list(test_list, rate, 4, found_ind='y') <= len(test_list[0])-2 and (test_list_back[move_2list(test_list, rate, 2, found_ind='y')+r][move_2list(test_list, rate, 3, found_ind=True)] != wall) if move_2list(test_list, rate, 4, found_ind='y') != len(test_list)-1 else False
     except IndexError:
         if warn == True:
           print('\033[93m'+'Bad-r-Conf', r)
