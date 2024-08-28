@@ -1,5 +1,5 @@
 from rencli import prinx, cuscol, color_char, ren_colz, prinx2, move_2list, d_list, check_vi
-import keyboard
+import keyboard, threading
 
 def welcome():
   cuscol(fp2=2000)
@@ -18,7 +18,7 @@ def welcome():
   anim_1("¶","¸",sha=2)
 
 def matr_move():
-  cuscol(lis=['4', '\u001b[33;1m', '3', '\u001b[33;1m', '2','\u001b[37m','1','\u001b[30;1m','0','\u001b[34m'], fp2=500)
+  cuscol(lis=['4', '\u001b[33;1m', '3', '\u001b[33;1m', '2','\u001b[37m','1','\u001b[30;1m','0','\u001b[34m'], fp2=0)
   test_list = [[0, 0, 0, 0, 0, 0, 0 ,0, 0], [0, 0, 0, 1, 0, 0, 0 ,0, 0], [0, 0, 0, 0, 0, 0, 0 ,0, 0], [0, 0, 0, 0, 0, 0, 0 ,0, 0], [0, 0, 0, 0, 0, 0, 0 ,0, 0], [0, 0, 0, 0, 0, 0, 0 ,0, 0]]
   item_list = [[0, 0, 0, 0, 0, 0, 0 ,0, 0], [0, 0, 0, 0, 0, 0, 0 ,0, 0], [0, 0, 0, 0, 0, 0, 0 ,0, 0], [0, 0, 0, 0, 0, 0, 0 ,0, 0], [0, 0, 0, 0, 0, 0, 0 ,3, 0], [0, 0, 0, 0, 0, 0, 0 ,0, 0]]
   test_list_back = [[0, 0, 2, 0, 0, 0, 0 ,0, 0], [0, 0, 2, 0, 0, 0, 0 ,0, 0], [0, 0, 0, 0, 0, 0, 0 ,0, 0], [0, 0, 2, 0, 0, 0, 0 ,0, 0], [0, 0, 0, 0, 0, 0, 0 ,0, 0], [0, 0, 0, 0, 0, 0, 0 ,0, 0]]
@@ -26,6 +26,8 @@ def matr_move():
   item = 3
   wall = 2
   rate = 1
+  def refre():
+    prinx2(d_list((d_list(test_list, test_list_back)), item_list), refs=True)
   def move1():
     if check_vi.check_r(test_list, test_list_back, rate, wall, False):
       if check_vi.check_r(test_list, item_list, rate, item, True):
@@ -58,6 +60,8 @@ def matr_move():
   keyboard.add_hotkey("d",move1)
   keyboard.add_hotkey("a",move3)
   keyboard.add_hotkey("s",move4)
+  tref = threading.Thread(target=refre)
+  tref.start()
+  tref.join()
   keyboard.wait()
-
 matr_move()
