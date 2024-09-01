@@ -1,7 +1,7 @@
 import std/[sequtils, strutils, terminal, os, times]
 
 #terminal.eraseScreen()
-var cust = @["1", "\x1B[30;1m", "\x1B[40;1m", "2", "\x1B[31;1m", "\x1B[41;1m"]
+var cust = @["0", "\x1B[30;1m", "\x1B[40;1m", "1", "\x1B[31;1m", "\x1B[41;1m", "2", "\x1B[32;1m", "\x1B[42;1m"]
 var fp = 200
 var backlog = ""
 var bol = false
@@ -65,13 +65,13 @@ proc colz(chars: auto, shadow: int = 0, mand: bool = false, lfix: bool = false):
    try:  
     return check_list.mapIt(color_char(it, shadow)).join()  
    except IOError:
-    echo "\x1B[31mNanType"  
+    echo "\x1B[31mNanType"
     quit()  
   else:  
    try:  
     return chars.mapIt(color_char(it, shadow)).join()  
    except IOError:
-    echo "\x1B[31mNanType"  
+    echo "\x1B[31mNanType"
     quit()  
 
 proc ren_colz(local: seq[seq[auto]], refs: bool = false, shadow: int = 0): string =
@@ -81,7 +81,7 @@ proc ren_colz(local: seq[seq[auto]], refs: bool = false, shadow: int = 0): strin
     data_temp_2.add(color_char(i, shadow))  
    data_temp_2.add("\n")  
   if refs:  
-   data_temp_2.add(color_char("-2"))
+   data_temp_2.add(color_char("-1"))
    return data_temp_2
 
 proc echx(import_l: seq[seq[auto]], refs = true, sha = 0) =
@@ -129,7 +129,7 @@ proc actouch(import_l: seq[seq[string]], import_l2: seq[seq[string]], lmove: int
         return false
 
 proc lmove(import_l: var seq[seq[string]], mmod: int, targ: string = "0"): seq[seq[string]] =
-  if mmod == 0:
+  if mmod == 180:
     for i in import_l:
       if targ in i:
         var import_ll = import_l[import_l.find(i)]
@@ -148,7 +148,7 @@ proc lmove(import_l: var seq[seq[string]], mmod: int, targ: string = "0"): seq[s
         import_l.delete(import_l.find(i))
         import_l.insert(import_ll, eend)
         return import_l
-  if mmod == 180:
+  if mmod == 0:
     for i in import_l:
       if targ in i:
         var import_ll = import_l[import_l.find(i)]
@@ -192,4 +192,3 @@ proc lmove(import_l: var seq[seq[string]], mmod: int, targ: string = "0"): seq[s
         import_l.delete(0)
         import_l.add(eend)
   import_l
-
