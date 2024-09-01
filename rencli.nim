@@ -123,7 +123,6 @@ proc actouch(import_l: seq[string], import_l2: seq[string], lmove: int, main_tar
 proc actouch(import_l: seq[seq[string]], import_l2: seq[seq[string]], lmove: int, main_targ: string, sec_targ: string): bool =
   for i in import_l:
     if main_targ in i:
-
       if i.find(main_targ) == import_l2[import_l.find(i)+lmove].find(sec_targ):
         return true
       else:
