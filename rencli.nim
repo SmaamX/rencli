@@ -1,4 +1,4 @@
-import std/[sequtils, strutils, terminal, os, times], illwill
+import std/[sequtils, strutils, terminal, os, times]
 
 #terminal.eraseScreen()
 var cust = @["1", "\x1B[30;1m", "\x1B[40;1m", "2", "\x1B[31;1m", "\x1B[41;1m"]
