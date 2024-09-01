@@ -65,13 +65,13 @@ proc colz(chars: auto, shadow: int = 0, mand: bool = false, lfix: bool = false):
    try:  
     return check_list.mapIt(color_char(it, shadow)).join()  
    except IOError:
-    echo "\x1B[31mNanType:"  
+    echo "\x1B[31mNanType"  
     quit()  
   else:  
    try:  
     return chars.mapIt(color_char(it, shadow)).join()  
    except IOError:
-    echo "\x1B[31mNanType:"  
+    echo "\x1B[31mNanType"  
     quit()  
 
 proc ren_colz(local: seq[seq[auto]], refs: bool = false, shadow: int = 0): string =
