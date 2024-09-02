@@ -132,21 +132,21 @@ proc actouch(import_l: seq[string], import_l2: seq[string], lmove: int, main_tar
     return false
 
 proc actouch(import_l: seq[seq[string]], import_l2: seq[seq[string]], lmove: int, main_targ: string, sec_targ: string, lmod:bool = true): bool =
-  for i in import_l:
-    if main_targ in i:
+  for i in countup(0, len(import_l)-1):
+    if main_targ in import_l[i]:
       if lmod == false:
         try:
-          if i.find(main_targ) == import_l2[import_l.find(i)+lmove].find(sec_targ):
+          if import_l[i].find(main_targ) == import_l2[i+lmove].find(sec_targ):
             return true
           else:
             return false
         except IndexDefect:
           return false
       else:
-        for iv in import_l2:
-          if sec_targ in iv:
+        for iv in countup(0, len(import_l2)-1):
+          if sec_targ in import_l2[iv]:
             try:
-              if i.find(main_targ)+lmove+import_l.find(i) == iv.find(sec_targ)+import_l2.find(iv):
+              if import_l[i].find(main_targ)+lmove == import_l2[iv].find(sec_targ) and i == iv:
                 return true
               else:
                 return false
