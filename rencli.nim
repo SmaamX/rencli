@@ -34,11 +34,9 @@ proc addLists(list1, list2: seq[string]): seq[string] =
   outlist_str
 
 proc addLists(list1: seq[seq[string]], list2: seq[seq[string]]): seq[seq[string]] =
-  echo list1, list2
   var out1: seq[seq[string]]
   for i in countup(0, len(list1)-1):
     out1.add(addLists(list1[i], list2[i]))
-  echo "tws", out1
   out1
 
 proc color_char(char: string, shadow: int = 0): string =
