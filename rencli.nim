@@ -1,8 +1,8 @@
-import std/[sequtils, strutils, terminal, os, times], illwill
+import std/[sequtils, strutils, os, times], illwill
 
 #terminal.eraseScreen()
 var cust = @["0", "\x1B[30;1m", "\x1B[40;1m", "1", "\x1B[31;1m", "\x1B[41;1m", "2", "\x1B[32;1m", "\x1B[42;1m"]
-var fp = 200
+var fp = 0
 var backlog = ""
 var bol = false
 var mand = true
@@ -13,7 +13,10 @@ proc refs(dela: int = 1) =
    echo "\033[2K\r"
   else:
    try:
-     terminal.eraseScreen()
+     if hostOS == "windows":
+       discard os.execShellCmd("cls")
+     else:
+       discard os.execShellCmd("clear")
    except:
      discard
 
@@ -30,12 +33,13 @@ proc addLists(list1, list2: seq[string]): seq[string] =
     outlist_str.add(intToStr(i))
   outlist_str
 
-proc addLists(list1, list2: seq[seq[string]]): seq[seq[string]] =
+proc addLists(list1: seq[seq[string]], list2: seq[seq[string]]): seq[seq[string]] =
+  echo list1, list2
   var out1: seq[seq[string]]
-  for i in list1:
-    out1.add(addLists(i, list2[list1.find(i)]))
+  for i in countup(0, len(list1)-1):
+    out1.add(addLists(list1[i], list2[i]))
+  echo "tws", out1
   out1
-
 
 proc color_char(char: string, shadow: int = 0): string =
   var vj: string  
@@ -142,7 +146,7 @@ proc actouch(import_l: seq[seq[string]], import_l2: seq[seq[string]], lmove: int
         for iv in import_l2:
           if sec_targ in iv:
             try:
-              if i.find(main_targ)+lmove == iv.find(sec_targ):
+              if i.find(main_targ)+lmove+import_l.find(i) == iv.find(sec_targ)+import_l2.find(iv):
                 return true
               else:
                 return false
