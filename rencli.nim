@@ -1,4 +1,4 @@
-import std/[sequtils, strutils, terminal, os, times]
+import std/[sequtils, strutils, terminal, os, times], illwill
 
 #terminal.eraseScreen()
 var cust = @["0", "\x1B[30;1m", "\x1B[40;1m", "1", "\x1B[31;1m", "\x1B[41;1m", "2", "\x1B[32;1m", "\x1B[42;1m"]
@@ -29,6 +29,13 @@ proc addLists(list1, list2: seq[string]): seq[string] =
   for i in outlist:
     outlist_str.add(intToStr(i))
   outlist_str
+
+proc addLists(list1, list2: seq[seq[string]]): seq[seq[string]] =
+  var out1: seq[seq[string]]
+  for i in list1:
+    out1.add(addLists(i, list2[list1.find(i)]))
+  out1
+
 
 proc color_char(char: string, shadow: int = 0): string =
   var vj: string  
@@ -120,13 +127,27 @@ proc actouch(import_l: seq[string], import_l2: seq[string], lmove: int, main_tar
   else:
     return false
 
-proc actouch(import_l: seq[seq[string]], import_l2: seq[seq[string]], lmove: int, main_targ: string, sec_targ: string): bool =
+proc actouch(import_l: seq[seq[string]], import_l2: seq[seq[string]], lmove: int, main_targ: string, sec_targ: string, lmod:bool = true): bool =
   for i in import_l:
     if main_targ in i:
-      if i.find(main_targ) == import_l2[import_l.find(i)+lmove].find(sec_targ):
-        return true
+      if lmod == false:
+        try:
+          if i.find(main_targ) == import_l2[import_l.find(i)+lmove].find(sec_targ):
+            return true
+          else:
+            return false
+        except IndexDefect:
+          return false
       else:
-        return false
+        for iv in import_l2:
+          if sec_targ in iv:
+            try:
+              if i.find(main_targ)+lmove == iv.find(sec_targ):
+                return true
+              else:
+                return false
+            except IndexDefect:
+              return false
 
 proc lmove(import_l: var seq[seq[string]], mmod: int, targ: string = "0"): seq[seq[string]] =
   if mmod == 180:
