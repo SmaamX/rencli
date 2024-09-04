@@ -24,7 +24,6 @@ proc termget_win(): auto =
       echo "e -> ", getCurrentExceptionMsg()
   finally:
     close(h)
-  echo WindowSize
 
 proc refs(dela: int = 1) =
   sleep(dela)
