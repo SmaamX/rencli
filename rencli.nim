@@ -1,4 +1,4 @@
-import std/[sequtils, strutils, os, times], illwill
+import std/[sequtils, strutils, os, times], illwill, winregistry
 
 #terminal.eraseScreen()
 var cust = @["0", "\x1B[30;1m", "\x1B[40;1m", "1", "\x1B[31;1m", "\x1B[41;1m", "2", "\x1B[32;1m", "\x1B[42;1m"]
@@ -6,6 +6,25 @@ var fp = 0
 var backlog = ""
 var bol = false
 var mand = true
+
+proc termget_win(): auto =
+  var
+   faceName: string
+   WindowSize: int32
+   fontWeight: int32
+   h: RegHandle
+  try:
+    h = open("HKEY_CURRENT_USER\\Console\\%SystemRoot%_System32_WindowsPowerShell_v1.0_powershell.exe", samRead)
+    return [h.readInt32("WindowSize"), h.readInt32("FontWeight")]
+  except OSError:
+    try:
+      h = open("HKEY_CURRENT_USER\\Console\\%%SystemRoot%%_system32_cmd.exe", samRead)
+      return [h.readInt32("WindowSize"), h.readInt32("FontWeight")]
+    except OSError:
+      echo "e -> ", getCurrentExceptionMsg()
+  finally:
+    close(h)
+  echo WindowSize
 
 proc refs(dela: int = 1) =
   sleep(dela)
@@ -87,11 +106,12 @@ proc ren_colz(local: seq[seq[auto]], refs: bool = false, shadow: int = 0): strin
   var data_temp_2 = ""  
   for r in local:  
    for i in r:  
-    data_temp_2.add(color_char(i, shadow))  
-   data_temp_2.add("\n")  
-  if refs:  
+    data_temp_2.add(color_char(i, shadow))
+   data_temp_2.add("\n")
+  if refs == true:
    data_temp_2.add(color_char("-1"))
    return data_temp_2
+  return data_temp_2
 
 proc echx(import_l: seq[seq[auto]], refs = true, sha = 0) =
   echo ren_colz(import_l, refs = refs, shadow = sha)
@@ -215,3 +235,10 @@ proc lmove(import_l: var seq[seq[string]], mmod: int, targ: string = "0"): seq[s
         import_l.delete(0)
         import_l.add(eend)
   import_l
+
+proc lmove(import_l: seq[seq[string]], mmod:int = 1, targ: string = "0", rev:int = 1): seq[seq[string]] =
+  if mmod == 1:
+    var t_list = import_l
+    for i in countup(0,rev):
+      return addLists(addLists(addLists(lmove(t_list, 0, targ = targ),lmove(t_list, 0, targ = targ)),lmove(t_list, 270, targ = targ)),lmove(t_list, 180, targ = targ))
+    return t_list
