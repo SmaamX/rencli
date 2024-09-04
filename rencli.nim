@@ -336,26 +336,6 @@ proc lmove(import_lv: seq[seq[string]], mmod: int, targ: string = "0", lrev:int 
     if j == lrev:
       return import_l
 
-proc echdraw(import_l: seq[seq[string]], x:seq[int], y:seq[int], layer:bool = false, targ:string = "1", disrange:int = -1): seq[seq[string]] =
-  var import_lll = import_l
-  var import_v = import_l
-  var i = 0
-  for xn in x:
-    for yn in y:
-      if xn != -1:
-        i += 1
-        if i >= disrange and disrange != -1:
-          discard lmove(import_v, xn, targ=targ)
-          discard lmove(import_v, yn, targ=targ)
-          import_lll = delLists(import_lll,import_v)
-        var import_ll = import_l
-        discard lmove(import_ll, xn, targ=targ)
-        discard lmove(import_ll, yn, targ=targ)
-        import_lll = addLists(import_lll,import_ll)
-        if layer == true:
-          echx import_lll
-  import_lll
-
 proc echdraw(import_l: seq[seq[string]], x:seq[int], y:seq[int], xslp:seq[int] = @[], targ:string = "0", layer: bool = false, disrange:int = -1, deoverflow:bool = true): seq[seq[string]] =
   var varlayer = false
   if xslp != @[]:
