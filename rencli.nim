@@ -171,74 +171,82 @@ proc actouch(import_l: seq[seq[string]], import_l2: seq[seq[string]], lmove: int
             except IndexDefect:
               return false
 
-proc lmove(import_l: var seq[seq[string]], mmod: int, targ: string = "0"): seq[seq[string]] =
-  if mmod == 180:
-    for i in import_l:
-      if targ in i:
-        var import_ll = import_l[import_l.find(i)]
-        if targ == "0":
-          let eend = import_ll[0]
-          import_ll.delete(0)
-          import_ll.add(eend)
-        else:
-          if targ in import_ll[0]:
-            return import_l
-          else:
+proc lmove(import_l: var seq[seq[string]], mmod: int, targ: string = "0", lrev:int = 0): seq[seq[string]] =
+  for j in countup(0,lrev):
+    if mmod == 180:
+      for i in import_l:
+        if targ in i:
+          var import_ll = import_l[import_l.find(i)]
+          if targ == "0":
             let eend = import_ll[0]
             import_ll.delete(0)
             import_ll.add(eend)
-        let eend = import_l.find(i)
-        import_l.delete(import_l.find(i))
-        import_l.insert(import_ll, eend)
-        return import_l
-  if mmod == 0:
-    for i in import_l:
-      if targ in i:
-        var import_ll = import_l[import_l.find(i)]
-        if targ == "0":
-          let eend = import_ll[len(import_ll)-1]
-          import_ll.delete(len(import_ll)-1)
-          import_ll.insert(eend,0)
-        else:
-          if targ in import_ll[len(import_l)-1]:
-            return import_l
           else:
+            if targ in import_ll[0]:
+              if j == lrev:
+                return import_l
+            else:
+              let eend = import_ll[0]
+              import_ll.delete(0)
+              import_ll.add(eend)
+          let eend = import_l.find(i)
+          import_l.delete(import_l.find(i))
+          import_l.insert(import_ll, eend)
+          if j == lrev:
+            return import_l
+    if mmod == 0:
+      for i in import_l:
+        if targ in i:
+          var import_ll = import_l[import_l.find(i)]
+          if targ == "0":
             let eend = import_ll[len(import_ll)-1]
             import_ll.delete(len(import_ll)-1)
             import_ll.insert(eend,0)
-        let eend = import_l.find(i)
-        import_l.delete(import_l.find(i))
-        import_l.insert(import_ll, eend)
-        return import_l
-  if mmod == 270:
-    if targ == "0":
-      let eend = import_l[len(import_l)-1]
-      import_l.delete(len(import_l)-1)
-      import_l.insert(eend,0)
-    else:
-      if targ in import_l[len(import_l)-1]:
-        return import_l
-      else:
+          else:
+            if targ in import_ll[len(import_l)-1]:
+              if j == lrev:
+                return import_l
+            else:
+              let eend = import_ll[len(import_ll)-1]
+              import_ll.delete(len(import_ll)-1)
+              import_ll.insert(eend,0)
+          let eend = import_l.find(i)
+          import_l.delete(import_l.find(i))
+          import_l.insert(import_ll, eend)
+          if j == lrev:
+            return import_l
+    if mmod == 270:
+      if targ == "0":
         let eend = import_l[len(import_l)-1]
         import_l.delete(len(import_l)-1)
         import_l.insert(eend,0)
-  if mmod == 90:
-    if targ == "0":
-      let eend = import_l[0]
-      import_l.delete(0)
-      import_l.add(eend)
-    else:
-      if targ in import_l[0]:
-        return import_l
       else:
+        if targ in import_l[len(import_l)-1]:
+          if j == lrev:
+            return import_l
+        else:
+          let eend = import_l[len(import_l)-1]
+          import_l.delete(len(import_l)-1)
+          import_l.insert(eend,0)
+    if mmod == 90:
+      if targ == "0":
         let eend = import_l[0]
         import_l.delete(0)
         import_l.add(eend)
-  import_l
+      else:
+        if targ in import_l[0]:
+          if j == lrev:
+            return import_l
+        else:
+          let eend = import_l[0]
+          import_l.delete(0)
+          import_l.add(eend)
+    if j == lrev:
+      return import_l
 
-proc lmove(import_l: seq[seq[string]], mmod:int = 1, targ: string = "0", rev:int = 1): seq[seq[string]] =
+proc lmove(import_l: seq[seq[seq[string]]], mmod:int = 1, targ: string = "0", rev:int = 1): seq[seq[string]] =
   if mmod == 1:
-    var t_list = import_l
+    var t_list = import_l[0]
     for i in countup(0,rev):
       return addLists(addLists(addLists(lmove(t_list, 0, targ = targ),lmove(t_list, 0, targ = targ)),lmove(t_list, 270, targ = targ)),lmove(t_list, 180, targ = targ))
     return t_list
