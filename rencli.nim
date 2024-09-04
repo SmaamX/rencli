@@ -73,7 +73,7 @@ proc delLists(list1: seq[string], list2: seq[string]): seq[string] =
 proc delLists(list1: seq[seq[string]], list2: seq[seq[string]]): seq[seq[string]] =
   var out1: seq[seq[string]]
   for i in countup(0, len(list1)-1):
-    out1.add(addLists(list1[i], list2[i]))
+    out1.add(delLists(list1[i], list2[i]))
   out1
 
 proc color_char(char: string, shadow: int = 0): string =
