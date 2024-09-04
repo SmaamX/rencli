@@ -356,3 +356,30 @@ proc echdraw(import_l: seq[seq[string]], x:seq[int], y:seq[int], layer:bool = fa
         if layer == true:
           echx import_lll
   import_lll
+
+proc echdraw(import_l: seq[seq[string]], x:seq[int], y:seq[int], xslp:seq[int] = @[], targ:string = "0", layer: bool = false, disrange:int = -1, deoverflow:bool = true): seq[seq[string]] =
+  var varlayer = false
+  if xslp != @[]:
+    var varlayer = true
+  var import_lll = import_l
+  var import_v = import_l
+  var i = 0
+  for xn in x:
+    for yn in y:
+      if deoverflow == true and xn == yn:
+        continue
+      if yn != -1:
+        i += 1
+        if i >= disrange and disrange != -1:
+          discard lmove(import_v, xn, targ=targ)
+          discard lmove(import_v, yn, targ=targ)
+          import_lll = delLists(import_lll,import_v)
+        var import_ll = import_l
+        discard lmove(import_ll, xn, targ=targ)
+        discard lmove(import_ll, yn, targ=targ)
+        import_lll = addLists(import_lll,import_ll)
+        if layer == true or varlayer == true:
+          echx import_lll
+          if xslp != @[]:
+            sleep(xslp[i])
+  import_lll
