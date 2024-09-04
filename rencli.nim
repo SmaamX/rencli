@@ -39,7 +39,7 @@ proc refs(dela: int = 1) =
    except:
      discard
 
-proc addLists(list1, list2: seq[string]): seq[string] =
+proc addLists(list1: seq[string], list2: seq[string]): seq[string] =
   var intlist1: seq[int] = @[]
   var intlist2: seq[int] = @[]
   for i in list1:
@@ -53,6 +53,25 @@ proc addLists(list1, list2: seq[string]): seq[string] =
   outlist_str
 
 proc addLists(list1: seq[seq[string]], list2: seq[seq[string]]): seq[seq[string]] =
+  var out1: seq[seq[string]]
+  for i in countup(0, len(list1)-1):
+    out1.add(addLists(list1[i], list2[i]))
+  out1
+
+proc delLists(list1: seq[string], list2: seq[string]): seq[string] =
+  var intlist1: seq[int] = @[]
+  var intlist2: seq[int] = @[]
+  for i in list1:
+    intlist1.add(parseInt(i))
+  for i in list2:
+    intlist2.add(parseInt(i))
+  var outlist: seq[int] = zip(intlist1, intlist2).mapIt(it[0] - it[1])
+  var outlist_str: seq[string] = @[]
+  for i in outlist:
+    outlist_str.add(intToStr(i))
+  outlist_str
+
+proc delLists(list1: seq[seq[string]], list2: seq[seq[string]]): seq[seq[string]] =
   var out1: seq[seq[string]]
   for i in countup(0, len(list1)-1):
     out1.add(addLists(list1[i], list2[i]))
@@ -317,3 +336,23 @@ proc lmove(import_lv: seq[seq[string]], mmod: int, targ: string = "0", lrev:int 
           import_l.add(eend)
     if j == lrev:
       return import_l
+
+proc echdraw(import_l: seq[seq[string]], x:seq[int], y:seq[int], layer:bool = false, targ:string = "1", disrange:int = -1): seq[seq[string]] =
+  var import_lll = import_l
+  var import_v = import_l
+  var i = 0
+  for xn in x:
+    for yn in y:
+      if xn != -1:
+        i += 1
+        if i >= disrange and disrange != -1:
+          discard lmove(import_v, xn, targ=targ)
+          discard lmove(import_v, yn, targ=targ)
+          import_lll = delLists(import_lll,import_v)
+        var import_ll = import_l
+        discard lmove(import_ll, xn, targ=targ)
+        discard lmove(import_ll, yn, targ=targ)
+        import_lll = addLists(import_lll,import_ll)
+        if layer == true:
+          echx import_lll
+  import_lll
